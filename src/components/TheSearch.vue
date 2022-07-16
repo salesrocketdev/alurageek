@@ -3,14 +3,14 @@
 
   <button
     title="Pesquisar" type="button" 
-    class="geek-circle-button">
+    class="base-circle-button">
     <i class="fa fa-search" aria-hidden="true"></i>
   </button>
 
   <button
     v-on:click="emit('handlerForm')"
     title="Adicionar Produto" type="button"
-    class="geek-circle-button">
+    class="base-circle-button">
     <i class="fa fa-plus" aria-hidden="true"></i>
   </button>
 </template>

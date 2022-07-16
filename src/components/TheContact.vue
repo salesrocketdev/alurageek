@@ -1,7 +1,7 @@
 <template>
   <div class="contact">
     <div class="contact-header">
-      <img class="contact-header-icon" src="../assets/logo.svg" alt="Flamingo">
+      <img class="contact-header-icon" src="../assets/img/logo.svg" alt="Flamingo">
     </div>
     <div class="contact-info">
       <ul class="contact-info-list">

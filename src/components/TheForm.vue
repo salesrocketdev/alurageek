@@ -1,5 +1,5 @@
 <template>
-    <div class="outside" v-if="store.state.formStore.isOpen" @click="closeForm()"></div>    
+    <div class="outside bg-gray-900/50" v-if="store.state.formStore.isOpen" @click="closeForm()"></div>    
     <dialog class="base-sideform" v-if="store.state.formStore.isOpen" open>
       <div class="sideform">
         <div class="sideform-header">

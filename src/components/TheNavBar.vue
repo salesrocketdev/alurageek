@@ -1,9 +1,8 @@
 <template>
-  <div id="outside" class="outside"></div>
   <header class="header" id="myTopnav">
     <nav>     
       <div class="header-logo">
-        <img class="header-icon" src="../assets/logo.svg" alt="Flamingo">
+        <img class="header-icon" src="../assets/img/logo.svg" alt="Flamingo">
       </div>
 
       <ul class="header-list">
@@ -15,17 +14,27 @@
           <button class="primary-button" type="button">Home Page</button>
         </router-link>
                 
-        <router-link to="/product">
-          <button class="secondary-button" type="button">Menu Administrador</button>
+        <router-link to="/product" v-if="store.state.loginStore.isLogged">
+          <button title="Painel" class="secondary-button" type="button">Painel Administrativo</button>
         </router-link>
 
-        <router-link to="/login">
-          <button class="secondary-button" type="button">Login</button>
+        <router-link to="/login" v-if="!store.state.loginStore.isLogged">
+          <button title="Login" class="secondary-button" type="button">Login</button>
+        </router-link>
+
+        <router-link to="/login" v-if="store.state.loginStore.isLogged">
+          <button title="Sair" class="secondary-button" type="button" @click="store.state.loginStore.isLogged = false">Sair</button>
         </router-link>
       </div>
     </nav>
   </header>
 </template>
+
+<script setup>
+  import { useStore } from 'vuex';
+  
+  const store = useStore();
+</script>
 
 <style scoped>
 header {

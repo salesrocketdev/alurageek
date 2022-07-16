@@ -66,7 +66,7 @@
   font-weight: 600;
   text-transform: uppercase;
   text-align: center;
-  color: var(--main-primary-text-color);
+  color: var(--main-secondary-text-color);
 }
 .sideform-content, .dialog-content {
   padding: 10px;

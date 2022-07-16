@@ -12,5 +12,5 @@
 html {
 	font-family: 'Raleway', sans-serif !important;
 }
-@import url('../src/assets/base.css');
+@import url('../public/style.css');
 </style>

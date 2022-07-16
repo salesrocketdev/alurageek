@@ -20,6 +20,6 @@ import TheContact from "../../components/TheContact.vue";
 #root-app {
   background-color: var(--main-primary-bg-color);
   height: 500px;
-  padding: 20px;
+  padding: 0px;
 }
 </style>

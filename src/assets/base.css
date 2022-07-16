@@ -4,21 +4,21 @@ html {
 }
 
 .content-box {
-  padding: 10px;
+  padding: 0px;
 }
 .content {
   display: flex;
   align-items: center;
-  padding-bottom: 10px;
   margin-bottom: 10px;
+  padding: 25px 50px;
   min-height: 57px;
   border-bottom: 1px solid var(--main-border-bottom-color);
 }
 .content h1 {
-  font-size: 14px;
-  font-weight: 600;
-  text-transform: uppercase;
-  color: var(--main-title-color);
+  font-size: 20px;
+  font-weight: 800;
+  text-transform: capitalize;
+  color: var(--main-primary-text-color);
 }
 
 /* Aux Class */

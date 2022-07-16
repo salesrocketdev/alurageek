@@ -5,7 +5,7 @@
  color: var(--main-secondary-button-text);
  padding: 15px 20px;
  font-family: 'Raleway', sans-serif !important;
- border: none;
+ border: 1px solid var(--main-primary-button-bg);
  transition: 0.3s;
  cursor: pointer;
 }

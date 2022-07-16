@@ -33,7 +33,7 @@
   left: 70%;
   width: 30%;
   height: 100%;
-  background-color: var(--main-primary-button-bg);
+  background-color: var(--main-secondary-bg-color);
   border: none;
   z-index: 21;
   animation: slide 1s forwards;
@@ -66,10 +66,10 @@
   font-weight: 600;
   text-transform: uppercase;
   text-align: center;
-  color: var(--main-secondary-text-color);
+  color: var(--main-primary-text-color);
 }
 .sideform-content, .dialog-content {
-  padding: 10px;
+  padding: 10px 0px 0px 0px;
 }
 .sideform-action, .dialog-action {
   display: flex;
@@ -77,34 +77,20 @@
   width: 100%;
 }
 .sideform-action button, .dialog-action button {
-  background-color: var(--main-bg-color);
-  border: 1px solid var(--main-primary-color);
-  color: var(--main-primary-color);
+  background-color: var(--main-primary-button-bg);
+  border: 1px solid var(--main-secondary-button-bg);
+  color: var(--main-secondary-text-color);
   padding: 5px;
   width: 95%;
   height: 40px;
-  border-radius: 10px;
+  border-radius: 5px;
   margin: 0px 5px 0px 5px;
   font-weight: 500;
   transition: 0.3s;
 }
 .sideform-action button:hover, .dialog-action button:hover {
-  background-color: var(--main-primary-color);
-  color: var(--main-secondary-text-color);
+  background-color: var(--main-secondary-button-bg);
+  color: var(--main-primary-button-text);
 }
 
-/*#endregion*/
-
-/*#region Base Image Dialog/Viewer*/
-.image-dialog {
-  margin-top: -10px;
-}
-.image-dialog-action {
-  display: flex;
-  justify-content: flex-end;  
-}
-.image-dialog-content img {
-  width: 100%;
-  height: 450px;
-}
 /*#endregion*/

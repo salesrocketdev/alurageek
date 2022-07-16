@@ -14,7 +14,7 @@
           <button 
             title="Salvar" 
             type="button" 
-            class="btn w-2/5"
+            class="w-2/5"
             @click="emit('handlerConfirmForm')">
             Salvar
           </button>
@@ -22,7 +22,7 @@
           <button
             title="Cancelar" 
             type="button" 
-            class="btn w-2/5"
+            class="w-2/5"
             @click="closeForm()">
             Cancelar
           </button>

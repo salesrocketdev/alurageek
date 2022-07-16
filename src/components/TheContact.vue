@@ -17,11 +17,11 @@
       <form action="">
         <h1>Fale Conosco</h1>
 
-        <label for="name">Nome</label>
-        <input class="form-input" id="name" type="text" placeholder="Digite seu nome...">
+        <label class="form-label" for="name">Nome</label>
+        <input class="form-input mt-[10px] mb-[20px]" id="name" type="text" placeholder="Digite seu nome...">
 
-        <label for="message">Mensagem</label>
-        <textarea class="form-input" id="message" rows="4" placeholder="Digite sua mensagem..."></textarea>
+        <label class="form-label" for="message">Mensagem</label>
+        <textarea class="form-input mt-[10px] mb-[10px]" id="message" rows="4" placeholder="Digite sua mensagem..."></textarea>
 
         <button title="Enviar Mensagem" class="primary-button">Enviar Mensagem</button>
       </form>

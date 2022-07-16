@@ -1,9 +1,9 @@
 <template>
-  <input class="form-input" title="Pesquisar Produto" type="text" placeholder="Pesquisar produto..." />
+  <input class="form-input w-full rounded-[30px]" title="Pesquisar Produto" type="text" placeholder="Pesquisar produto..." />
 
   <button
     title="Pesquisar" type="button" 
-    class="base-circle-button">
+    class="base-circle-button hover:text-[#212121]">
     <i class="fa fa-search" aria-hidden="true"></i>
   </button>
 
@@ -24,8 +24,4 @@
 </script>
 
 <style scoped>
-.form-input {
-  width: 100%;
-  border-radius: 5px;
-}
 </style>

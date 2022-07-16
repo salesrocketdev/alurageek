@@ -11,19 +11,19 @@
 
       <template v-if="!store.state.formStore.isLoading">
         <div class="dialog-form h-2/3 mb-5">
-          <label class="" for="title">URL da imagem</label>
-          <input class="form-input w-full mt-[5px] mb-[5px] placeholder-[#8b8b8b]" id="title" type="text" placeholder="URL da imagem" />
+          <label class="form-label" for="url">URL da imagem</label>
+          <input class="form-input w-full mt-[5px] mb-[5px] placeholder-[#8b8b8b]" id="url" type="text" placeholder="URL da imagem" />
 
-          <label class="" for="vacanciesAvailable">Categoria</label>
-          <input class="form-input w-full mt-[5px] mb-[5px] placeholder-[#8b8b8b]" id="vacanciesAvailable" type="text" placeholder="Categoria" />
+          <label class="form-label" for="category">Categoria</label>
+          <input class="form-input w-full mt-[5px] mb-[5px] placeholder-[#8b8b8b]" id="category" type="text" placeholder="Categoria" />
 
-          <label class="" for="city">Nome do Produto</label>
-          <input class="form-input w-full mt-[5px] mb-[5px] placeholder-[#8b8b8b]" id="city" type="text" placeholder="Nome do Produto" />
+          <label class="form-label" for="title">Nome do Produto</label>
+          <input class="form-input w-full mt-[5px] mb-[5px] placeholder-[#8b8b8b]" id="title" type="text" placeholder="Nome do Produto" />
 
-          <label class="" for="limitInstallment">Preço do Produto</label>
-          <input class="form-input w-full mt-[5px] mb-[5px] placeholder-[#8b8b8b]" id="limitInstallment" type="text" placeholder="Preço do Produto" />
+          <label class="form-label" for="price">Preço do Produto</label>
+          <the-masked id="price" placeholder="Preço do Produto" :options="{ currency: 'BRL', locale: 'pt-br', autoDecimalDigits: true }" />
 
-          <label class="" for="description">Descrição do Produto</label>
+          <label class="form-label" for="description">Descrição do Produto</label>
           <textarea id="description" class="form-input w-full mt-[5px] mb-[5px] placeholder-[#8b8b8b]" placeholder="Descrição do Produto" cols="30" rows="10" ></textarea>                  
         </div>
       </template>
@@ -33,6 +33,7 @@
 
 <script setup>
   import TheForm from '../../../../components/TheForm.vue';
+  import TheMasked from '@/components/TheMasked.vue';
 
   import { defineEmits } from 'vue';
   import { useStore } from 'vuex';
@@ -49,7 +50,5 @@
 </script>
 
 <style>
-.dialog-form input, textarea {
-  width: 100%;
-}
+
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="content-box">
     <div class="content">
-      <h1 class="title">Product List</h1>
+      <h1 class="title w-[150px]">Product List</h1>
       <TheSearch @handlerForm="add()"></TheSearch>
     </div>
 
@@ -20,7 +20,6 @@
 
   function add() {
     store.commit('formStore/storeIsOpen', true);
-    console.log('abriu form')
     store.commit('formStore/storeIsNew', true);
   }
 </script>

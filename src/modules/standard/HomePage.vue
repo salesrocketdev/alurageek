@@ -3,7 +3,7 @@
       <TheHeader></TheHeader>      
 
     <div class="content">
-      <h1 class="title w-[150px]">Home admin page</h1>
+      <h1 class="title">Home standard page</h1>
     </div>
 
     <div class="product-list">

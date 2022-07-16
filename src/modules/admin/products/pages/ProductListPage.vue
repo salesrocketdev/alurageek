@@ -2,9 +2,11 @@
   <div class="content-box">
     <div class="content">
       <h1 class="title w-[200px]">Lista de Produtos</h1>
-      <TheSearch @handlerForm="add()" @handler-dialog="openDialog()"></TheSearch>
+      <TheSearch @handlerForm="add()" @handler-dialog="del()"></TheSearch>
     </div>
 
+    <TheTable></TheTable>
+    
     <!--Edit/Add Side Form-->
     <ProductForm></ProductForm>
 
@@ -15,6 +17,7 @@
 
 <script setup>
   import TheSearch from '@/components/TheSearch.vue';
+  import TheTable from '@/components/TheTable.vue';
   import ProductForm from '../components/ProductForm.vue';
   import TheDialog from '../../../../components/TheDialog.vue';
 
@@ -26,7 +29,7 @@
     store.commit('formStore/storeIsOpen', true);
     store.commit('formStore/storeIsNew', true);
   }
-  function openDialog() {
+  function del() {
     store.commit('dialogStore/storeIsOpen', true);
   }
 </script>

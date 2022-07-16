@@ -10,11 +10,15 @@
       </ul>        
 
       <div class="header-action">
-        <router-link to="/home">
+        <router-link to="/home" v-if="!store.state.loginStore.isLogged">
           <button class="primary-button" type="button">Home Page</button>
         </router-link>
+
+        <router-link to="/admin/panel" v-if="store.state.loginStore.isLogged">
+          <button class="primary-button" type="button">Vitrine de Produtos</button>
+        </router-link>
                 
-        <router-link to="/product" v-if="store.state.loginStore.isLogged">
+        <router-link to="/admin/list" v-if="store.state.loginStore.isLogged">
           <button title="Painel" class="secondary-button" type="button">Painel Administrativo</button>
         </router-link>
 

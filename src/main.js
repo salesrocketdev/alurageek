@@ -4,10 +4,17 @@ import { createApp } from 'vue'
 import { createStore } from 'vuex'
 import { createRouter, createWebHashHistory } from "vue-router";
 
-import HomePage from "./modules/admin/HomePage.vue";
-import ProductListPage from "./modules/admin/products/pages/ProductListPage.vue";
-import LoginPage from "./modules/admin/LoginPage.vue";
-import MainPage from "./modules/admin/MainPage.vue";
+//Standard Module
+import MainPage from "./modules/standard/MainPage.vue";
+import HomePage from "./modules/standard/HomePage.vue";
+import ProductInfoPage from "./modules/standard/ProductInfoPage.vue";
+import ProductListPage from "./modules/standard/ProductListPage.vue";
+import LoginPage from "./modules/standard/LoginPage.vue";
+
+//Admin Module
+import AdminMainPage from "./modules/admin/MainPage.vue";
+import AdminHomePage from "./modules/admin/HomePage.vue";
+import AdminProductListPage from "./modules/admin/products/pages/ProductListPage.vue";
 
 import FormStore from "./store/form.store";
 import DialogStore from "./store/dialog.store";
@@ -26,9 +33,28 @@ const router = createRouter({
           component: HomePage,
         },
         {
-          path: "product",
+          path: "list",
+          component: ProductInfoPage,
+        },
+        {
+          path: "info",
           component: ProductListPage,
         },
+      ],
+    },
+    {
+      path: "/admin",
+      redirect: "/admin/panel",
+      component: AdminMainPage,
+      children: [
+        {
+          path: "panel",
+          component: AdminHomePage,
+        },
+        {
+          path: "list",
+          component: AdminProductListPage,
+        }
       ],
     },
     {

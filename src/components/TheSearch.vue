@@ -1,17 +1,10 @@
 <template>
-  <input class="form-input w-full rounded-[30px]" title="Pesquisar Produto" type="text" placeholder="Pesquisar produto..." />
+  <input class="form-input w-full" title="Pesquisar Produto" type="text" placeholder="Pesquisar produto..." />
 
   <button
     title="Pesquisar" type="button" 
     class="base-circle-button hover:text-[#212121]">
     <i class="fa fa-search" aria-hidden="true"></i>
-  </button>
-
-  <button
-    v-on:click="emit('handlerDialog')"
-    title="Dialog" type="button" 
-    class="base-circle-button hover:text-[#212121]">
-    <i class="fa fa-windows" aria-hidden="true"></i>
   </button>
 
   <button
@@ -27,7 +20,6 @@
 
   const emit = defineEmits([
     'handlerForm',
-    'handlerDialog',
   ]);
 </script>
 

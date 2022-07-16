@@ -13,7 +13,10 @@
         <label class="form-label" for="password">Palavra chave</label>
         <input id="password" class="form-input w-full mt-3 mb-[40px]" type="password" placeholder="insira sua palavra chave" v-model="loginModel.password">
 
-        <button title="Conectar-se" class="primary-button w-full hover:bg-[#f15ada]" @click="login()">Conectar-se</button>
+        <button title="Conectar-se" class="primary-button w-full mb-3 hover:bg-[#f15ada]" @click="login()">Conectar-se</button>
+        <router-link to="/home" v-if="!store.state.loginStore.isLogged">
+          <button title="Voltar" class="primary-button w-full hover:bg-[#f15ada]" type="button">Voltar para loja</button>
+        </router-link>
       </div>
       <div class="login__footer flex items-center justify-center">
         <img class="w-[128px] h-[64px]" src="../../assets/img/logo.svg" alt="">
@@ -34,7 +37,7 @@
 
   function login() {
     store.commit('loginStore/storeIsLogged', true);
-    router.push('home/');                
+    router.push('admin/panel');                
 
     store.dispatch("loginStore/post", loginModel).then(response => {
       if(response.success){
@@ -43,7 +46,6 @@
         localStorage.setItem('name', response.data.name);
         localStorage.setItem('id', response.data.id);
     
-        router.push('home/');                
       }else{
         console.log(response.error);
       }

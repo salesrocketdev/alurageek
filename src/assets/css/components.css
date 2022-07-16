@@ -46,7 +46,7 @@
   overflow-y: auto;
   height: auto;
   border-radius: 10px;
-  background-color: var(--main-primary-button-bg);
+  background-color: var(--main-secondary-bg-color);
   transform: translateY(-50%);
   z-index: 21;
   animation: popslide 1s forwards;
@@ -91,6 +91,7 @@
 .sideform-action button:hover, .dialog-action button:hover {
   background-color: var(--main-secondary-button-bg);
   color: var(--main-primary-button-text);
+  border: 1px solid var(--main-primary-button-bg);
 }
 
 /*#endregion*/

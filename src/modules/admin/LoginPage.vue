@@ -7,10 +7,10 @@
       <div class="login__form flex flex-col">
         <p class="form-title mb-5">Insira suas informações para acessar o painel...</p>
 
-        <label class="text-[#444]" for="email">Email</label>
+        <label class="form-label" for="email">Email</label>
         <input id="email" class="form-input w-full mt-3 mb-5" type="email" placeholder="insira seu email" v-model="loginModel.email">
 
-        <label class="text-[#444]" for="password">Palavra chave</label>
+        <label class="form-label" for="password">Palavra chave</label>
         <input id="password" class="form-input w-full mt-3 mb-[40px]" type="password" placeholder="insira sua palavra chave" v-model="loginModel.password">
 
         <button title="Conectar-se" class="primary-button w-full hover:bg-[#f15ada]" @click="login()">Conectar-se</button>
@@ -54,7 +54,7 @@
 <style scoped>
 .container__login {
   height: 100vh;
-  background-color: var(--main-secondary-bg-color);
+  background-color: #b7d5ff;
   display: flex;
   position: relative;
   flex-direction: column;
@@ -65,7 +65,7 @@
 .container__login--card {
   width: 30%;
   padding: 10px;
-  background-color: #b7d5ff;
+  background-color: var(--main-secondary-bg-color);
   border-radius: 10px;
 }
 .login__title {
@@ -86,9 +86,9 @@
 }
 .form-title {
   padding: 0px;
-  font-weight: 600;
-  font-size: 16px;
-  color: #A0A0A0;
+  font-weight: 500;
+  font-size: 14px;
+  color: #6d6d6d;
 }
 .login__form {
   padding: 40px 15px 15px 15px;
@@ -109,7 +109,7 @@
     right: 0%;
     width: 100%;
     padding: 20px;
-    background-color: var(--main-bg-color);
+    background-color: var(--main-secondary-bg-color);
     border-top-right-radius: 40px;
     border-top-left-radius: 40px;
   }

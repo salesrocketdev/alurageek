@@ -6,12 +6,13 @@
  padding: 15px 20px;
  font-family: 'Raleway', sans-serif !important;
  border: none;
+ transition: 0.3s;
  cursor: pointer;
 }
 .primary-button:hover {
   background-color: var(--main-secondary-button-bg);
   color: var(--main-primary-button-text);
-  border: 1px solid var(--main--button-bg);
+  border: 1px solid var(--main-primary-button-bg);
 }
 
 .secondary-button {
@@ -20,12 +21,14 @@
   padding: 15px 20px;
   margin-left: 10px;
 	font-family: 'Raleway', sans-serif !important;
+  transition: 0.3s;
   cursor: pointer;
   border: 1px solid var(--main-primary-button-bg);
  }
  .secondary-button:hover {
   background-color: var(--main-primary-button-bg);
   color: var(--main-secondary-button-text);
+  border: 1px solid var(--main-secondary-button-bg);
  }
 
  .base-circle-button {

@@ -2,7 +2,7 @@
   <header class="header" id="myTopnav">
     <nav>     
       <div class="header-logo">
-        <img class="header-icon" src="../assets/img/logo.svg" alt="Flamingo">
+        <img class="header-icon" src="../assets/img/logo.svg" alt="Alura Geek">
       </div>
 
       <ul class="header-list">

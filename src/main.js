@@ -10,6 +10,7 @@ import LoginPage from "./modules/admin/LoginPage.vue";
 import MainPage from "./modules/admin/MainPage.vue";
 
 import FormStore from "./store/form.store";
+import DialogStore from "./store/dialog.store";
 import LoginStore from "./store/login.store";
 
 const router = createRouter({
@@ -43,6 +44,7 @@ const store = createStore({
   modules: {
     //tripStore: TripStore,
     formStore: FormStore,
+    dialogStore: DialogStore,
     loginStore: LoginStore,
   }
 })

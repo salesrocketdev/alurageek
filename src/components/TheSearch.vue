@@ -8,6 +8,13 @@
   </button>
 
   <button
+    v-on:click="emit('handlerDialog')"
+    title="Dialog" type="button" 
+    class="base-circle-button hover:text-[#212121]">
+    <i class="fa fa-windows" aria-hidden="true"></i>
+  </button>
+
+  <button
     v-on:click="emit('handlerForm')"
     title="Adicionar Produto" type="button"
     class="base-circle-button">
@@ -19,7 +26,8 @@
   import { defineEmits } from 'vue';
 
   const emit = defineEmits([
-    'handlerForm'
+    'handlerForm',
+    'handlerDialog',
   ]);
 </script>
 

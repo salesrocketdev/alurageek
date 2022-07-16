@@ -1,0 +1,32 @@
+.contact {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  padding: 50px 0px;
+  color: var(--main-primary-text-color);
+  background-color: var(--main-secondary-bg-color);
+}
+
+.contact-info .contact-info-list li {
+  padding: 15px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.contact-info .contact-info-list li:hover {
+  color: var(--main-primary-button-text);
+}
+.contact-form {
+  padding: 10px;
+  width: 450px;
+}
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px;
+}
+.contact-form form h1 {
+  padding: 0px 0px 10px 0px;
+}

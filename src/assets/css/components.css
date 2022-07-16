@@ -1,0 +1,110 @@
+/*#region Base Card Item*/
+.card-item {
+  display: flex;
+  background-color: var(--main-bg-color);
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.15);
+}
+
+#card-action {
+  background-color: #fff;
+  border: 1px solid #b1b1b150;
+  width: 200px;
+  border-radius: 5px;
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  z-index: 100;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 10px #00000050;
+  animation: popup 0.5s forwards;
+}
+/*#endregion*/
+
+/*#region Base Form & Base Dialog Component*/
+.base-sideform {
+  position: fixed;
+  overflow-y: auto;
+  top: 0;
+  left: 70%;
+  width: 30%;
+  height: 100%;
+  background-color: var(--main-primary-button-bg);
+  border: none;
+  z-index: 21;
+  animation: slide 1s forwards;
+}
+
+.base-dialog {
+  top: 50%;
+  min-width: 30%;
+  max-height: 87%;
+  overflow-y: auto;
+  height: auto;
+  border-radius: 10px;
+  background-color: var(--main-primary-button-bg);
+  transform: translateY(-50%);
+  z-index: 21;
+  animation: popslide 1s forwards;
+}
+
+.sideform, .dialog {
+  width: 100%
+}
+.sideform-header, .dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.sideform-header h2, .dialog-header h2 {
+  padding: 15px;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--main-primary-text-color);
+}
+.sideform-content, .dialog-content {
+  padding: 10px;
+}
+.sideform-action, .dialog-action {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+.sideform-action button, .dialog-action button {
+  background-color: var(--main-bg-color);
+  border: 1px solid var(--main-primary-color);
+  color: var(--main-primary-color);
+  padding: 5px;
+  width: 95%;
+  height: 40px;
+  border-radius: 10px;
+  margin: 0px 5px 0px 5px;
+  font-weight: 500;
+  transition: 0.3s;
+}
+.sideform-action button:hover, .dialog-action button:hover {
+  background-color: var(--main-primary-color);
+  color: var(--main-secondary-text-color);
+}
+
+/*#endregion*/
+
+/*#region Base Image Dialog/Viewer*/
+.image-dialog {
+  margin-top: -10px;
+}
+.image-dialog-action {
+  display: flex;
+  justify-content: flex-end;  
+}
+.image-dialog-content img {
+  width: 100%;
+  height: 450px;
+}
+/*#endregion*/

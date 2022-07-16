@@ -35,20 +35,5 @@
 </script>
 
 <style scoped>
-.product-info {
-  display: flex;
-}
-.product-info .product-image {
-  margin-right: 15px;
-}
-.product-info .product-image img {
-  max-width: 700px;
-  height: 400px;
-}
-.product-info .product-desc {
-  width: 40%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
+
 </style>

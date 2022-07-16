@@ -14,11 +14,11 @@
           <label class="form-label" for="url">URL da imagem</label>
           <input class="form-input w-full mt-[5px] mb-[5px] placeholder-[#8b8b8b]" id="url" type="text" placeholder="URL da imagem" />
 
-          <label class="form-label" for="category">Categoria</label>
-          <input class="form-input w-full mt-[5px] mb-[5px] placeholder-[#8b8b8b]" id="category" type="text" placeholder="Categoria" />
-
           <label class="form-label" for="title">Nome do Produto</label>
           <input class="form-input w-full mt-[5px] mb-[5px] placeholder-[#8b8b8b]" id="title" type="text" placeholder="Nome do Produto" />
+
+          <label class="form-label" for="category">Categoria</label>
+          <input class="form-input w-full mt-[5px] mb-[5px] placeholder-[#8b8b8b]" id="category" type="text" placeholder="Categoria" />          
 
           <label class="form-label" for="price">Preço do Produto</label>
           <the-masked id="price" placeholder="Preço do Produto" :options="{ currency: 'BRL', locale: 'pt-br', autoDecimalDigits: true }" />

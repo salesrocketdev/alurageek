@@ -2,7 +2,10 @@
 html {
 	font-family: 'Raleway', sans-serif !important;
 }
-
+#root-app {
+  background-color: var(--main-primary-bg-color);
+  padding: 0px;
+}
 .content-box {
   padding: 2rem 2.25rem;
 }

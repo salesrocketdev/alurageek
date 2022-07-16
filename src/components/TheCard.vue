@@ -10,14 +10,18 @@
       <p class="font-[500] text-[16px]">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
     </div>
 
-    <div class="item-action flex flex-col">
-      <button class="primary-button" @click="handlerOpen()">ver produto</button>      
+    <div class="item-action flex flex-col" v-if="!store.state.loginStore.isLogged">
+      <router-link to="info">
+        <button class="w-full primary-button">ver produto</button>
+      </router-link>
     </div>
   </div>
 </template>
 
 <script setup>
+  import { useStore } from 'vuex';
   
+  const store = useStore();
 </script>
 
 <style scoped>

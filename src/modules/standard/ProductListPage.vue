@@ -1,7 +1,6 @@
 <template>
+  <TheHeader></TheHeader>
   <div class="content-box">
-      <TheHeader></TheHeader>      
-
     <div class="content">
       <h1 class="title w-[150px]">product list page</h1>
     </div>

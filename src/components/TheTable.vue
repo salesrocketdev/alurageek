@@ -1,6 +1,5 @@
 <template>
-  <div class="content-box">
-    <div class="bg-[#fff] relative overflow-x-auto h-5/6 sm:rounded-[5px] ml-5 mr-5">
+  <div class="bg-[#fff] relative overflow-x-auto h-5/6 sm:rounded-[5px]">
       <table class="w-full text-sm text-left text-[#6D6D6D]">
         <thead class="text-xs bg-[#2a7ae4] text-gray-100 uppercase">
           <tr>
@@ -65,7 +64,6 @@
         </tbody>
       </table>
     </div>
-  </div>
 
 </template>
 

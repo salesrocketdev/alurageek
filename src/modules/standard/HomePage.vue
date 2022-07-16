@@ -1,9 +1,8 @@
 <template>
+  <TheHeader></TheHeader>      
   <div class="content-box">
-      <TheHeader></TheHeader>      
-
     <div class="content">
-      <h1 class="title">Home standard page</h1>
+      <h1 class="title">Lista de produtos</h1>
     </div>
 
     <div class="product-list">

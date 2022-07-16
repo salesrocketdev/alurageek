@@ -1,7 +1,7 @@
 <template>
   <div class="content-box">
     <div class="content">
-      <h1 class="title w-[200px]">Lista de Produtos</h1>
+      <h1 class="title w-[250px]">Lista de produtos</h1>
       <TheSearch @handlerForm="add()" @handler-dialog="del()"></TheSearch>
     </div>
 

@@ -7,8 +7,8 @@ import { createRouter, createWebHashHistory } from "vue-router";
 //Standard Module
 import MainPage from "./modules/standard/MainPage.vue";
 import HomePage from "./modules/standard/HomePage.vue";
-import ProductInfoPage from "./modules/standard/ProductInfoPage.vue";
 import ProductListPage from "./modules/standard/ProductListPage.vue";
+import ProductInfoPage from "./modules/standard/ProductInfoPage.vue";
 import LoginPage from "./modules/standard/LoginPage.vue";
 
 //Admin Module
@@ -34,11 +34,11 @@ const router = createRouter({
         },
         {
           path: "list",
-          component: ProductInfoPage,
+          component: ProductListPage,
         },
         {
           path: "info",
-          component: ProductListPage,
+          component: ProductInfoPage,
         },
       ],
     },

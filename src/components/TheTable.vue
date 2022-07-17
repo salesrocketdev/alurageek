@@ -13,44 +13,12 @@
         </thead>
 
         <tbody>
-          <tr class="border-b hover:bg-[#2a7ae420] border-t">
-            <th scope="row" class="px-6 py-4">1</th>
-            <th scope="row" class="px-6 py-4 whitespace-nowrap">Nome do produto</th>
-            <th scope="row" class="px-6 py-4 whitespace-nowrap">Descrição do produto</th>
-            <td class="px-6 py-4">Categoria</td>
-            <td class="px-6 py-4">Preço do produto</td>
-            <td class="px-6 py-4 text-start flex space-x-4">
-              <a class="font-medium text-blue-600 cursor-pointer" title="Editar" @click="handlerEdit()">
-                <i class="p-3 bg-gray-200 rounded-[25px] text-gray-500 hover:bg-[#2a7ae4] hover:text-gray-200 fa-solid fa-pen"></i>
-              </a>
-
-              <a class="font-medium text-blue-600 cursor-pointer" title="Deletar" @click="handlerDelete()">
-                <i class="p-3 bg-gray-200 rounded-[25px] text-gray-500 hover:bg-[#2a7ae4] hover:text-gray-200 fa-solid fa-trash-can"></i>
-              </a>
-            </td>
-          </tr>
-          <tr class="border-b hover:bg-[#2a7ae420] border-t">
-            <th scope="row" class="px-6 py-4">2</th>
-            <th scope="row" class="px-6 py-4 whitespace-nowrap">Nome do produto</th>
-            <th scope="row" class="px-6 py-4 whitespace-nowrap">Descrição do produto</th>
-            <td class="px-6 py-4">Categoria</td>
-            <td class="px-6 py-4">Preço do produto</td>
-            <td class="px-6 py-4 text-start flex space-x-4">
-              <a class="font-medium text-blue-600 cursor-pointer" title="Editar" @click="handlerEdit()">
-                <i class="p-3 bg-gray-200 rounded-[25px] text-gray-500 hover:bg-[#2a7ae4] hover:text-gray-200 fa-solid fa-pen"></i>
-              </a>
-
-              <a class="font-medium text-blue-600 cursor-pointer" title="Deletar" @click="handlerDelete()">
-                <i class="p-3 bg-gray-200 rounded-[25px] text-gray-500 hover:bg-[#2a7ae4] hover:text-gray-200 fa-solid fa-trash-can"></i>
-              </a>
-            </td>
-          </tr>
-          <tr class="border-b hover:bg-[#2a7ae420] border-t">
-            <th scope="row" class="px-6 py-4">3</th>
-            <th scope="row" class="px-6 py-4 whitespace-nowrap">Nome do produto</th>
-            <th scope="row" class="px-6 py-4 whitespace-nowrap">Descrição do produto</th>
-            <td class="px-6 py-4">Categoria</td>
-            <td class="px-6 py-4">Preço do produto</td>
+          <tr class="border-b hover:bg-[#2a7ae420] border-t" v-for="product in store.state.productStore.products" :key="product" :product="product">
+            <th scope="row" class="px-6 py-4"></th>
+            <th scope="row" class="px-6 py-4 whitespace-nowrap">{{props.product.title}}</th>
+            <th scope="row" class="px-6 py-4 whitespace-nowrap">{{props.product.description}}</th>
+            <td class="px-6 py-4">{{props.product.category}}</td>
+            <td class="px-6 py-4">{{props.product.price}}</td>
             <td class="px-6 py-4 text-start flex space-x-4">
               <a class="font-medium text-blue-600 cursor-pointer" title="Editar" @click="handlerEdit()">
                 <i class="p-3 bg-gray-200 rounded-[25px] text-gray-500 hover:bg-[#2a7ae4] hover:text-gray-200 fa-solid fa-pen"></i>
@@ -69,8 +37,17 @@
 
 <script setup>
   import { useStore } from 'vuex';
-
+  import { defineProps } from 'vue';
+  
   const store = useStore();
+  const props = defineProps({
+    product: {
+      title: String,
+      category: String,
+      price: Number,
+      description: String
+    }
+  });
   
   function handlerEdit() {
     store.commit('formStore/storeIsOpen', true);

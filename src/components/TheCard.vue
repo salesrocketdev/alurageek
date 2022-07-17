@@ -1,18 +1,18 @@
 <template>
   <div class="item-info mb-5">
     <div class="item-image mb-2">
-      <img src="../assets/img/item.png" alt="">        
+      <img class="w-full" :src="props.product.url" alt="">        
     </div>
 
     <div class="item-desc">
-      <p class="font-[500] text-[16px]">Produto XYZ</p>
-      <p class="font-[700] text-[16px]">R$ 60,00</p>
-      <p class="font-[500] text-[16px]">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+      <p class="font-[500] text-[16px]">{{props.product.title}}</p>
+      <p class="font-[700] text-[16px]">R$ {{props.product.price}}</p>
+      <p class="font-[500] text-[16px]">{{props.product.description}}</p>
     </div>
 
     <div class="item-action flex flex-col" v-if="!store.state.loginStore.isLogged">
       <router-link to="info">
-        <button class="w-full primary-button">ver produto</button>
+        <button class="w-full primary-button" @click="seeProduct()">ver produto</button>
       </router-link>
     </div>
   </div>
@@ -20,8 +20,22 @@
 
 <script setup>
   import { useStore } from 'vuex';
-  
+  import { defineProps } from 'vue';
+
   const store = useStore();
+  const props = defineProps({
+    product: {
+      id: String,
+      url: String,
+      title: String,
+      price: Number,
+      description: String
+    }
+  });
+
+  function seeProduct() {
+    //router.push('info/' + props.product.id);
+  }
 </script>
 
 <style scoped>

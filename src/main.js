@@ -17,6 +17,7 @@ import AdminHomePage from "./modules/admin/HomePage.vue";
 import AdminProductListPage from "./modules/admin/products/pages/ProductListPage.vue";
 
 import FormStore from "./store/form.store";
+import ProductStore from "./store/product.store";
 import DialogStore from "./store/dialog.store";
 import LoginStore from "./store/login.store";
 
@@ -70,6 +71,7 @@ const store = createStore({
   modules: {
     //tripStore: TripStore,
     formStore: FormStore,
+    productStore: ProductStore,
     dialogStore: DialogStore,
     loginStore: LoginStore,
   }

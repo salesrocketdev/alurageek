@@ -6,7 +6,7 @@
     </div>
 
     <div class="product-list">
-      <TheCard></TheCard>
+      <TheCard v-for="product in store.state.productStore.products" :key="product" :product="product"></TheCard>
     </div>
   </div>
 
@@ -15,6 +15,19 @@
 <script setup>
   import TheHeader from '../../components/TheHeader.vue';
   import TheCard from '../../components/TheCard.vue';
+
+  import { useStore } from 'vuex';
+  import { onMounted } from 'vue';
+
+  const store = useStore();
+
+  function get(){
+    store.dispatch("productStore/get");
+  }
+
+  onMounted(() => {
+    get();
+  });
 </script>
 
 <style>

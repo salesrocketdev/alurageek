@@ -9,7 +9,7 @@ export default {
         url: "",
         title: "",
         category: "",
-        price: "",  
+        price: 0,  
         description: "",
       }
     }
@@ -25,7 +25,7 @@ export default {
   actions: {
     async get({ commit }) {
       return new Promise((resolve, reject) => {
-        http.get("v1/product", {
+        http.get("v1/products", {
           headers: { 'Authorization': localStorage.getItem('token') }
         }).then(response => {
           commit("storeProducts", response.data);

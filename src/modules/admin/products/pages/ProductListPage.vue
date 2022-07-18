@@ -5,48 +5,19 @@
       <TheSearch @handlerForm="add()"></TheSearch>
     </div>
 
-    <div class="bg-[#fff] relative overflow-x-auto h-5/6 sm:rounded-[5px]">
-      <table class="w-full text-sm text-left text-[#6D6D6D]">
-        <thead class="text-xs bg-[#2a7ae4] text-gray-100 uppercase">
-          <tr>
-            <th scope="col" class="px-6 py-3">ID</th>
-            <th scope="col" class="px-6 py-3">Título</th>
-            <th scope="col" class="px-6 py-3">Categoria</th>
-            <th scope="col" class="px-6 py-3">Preço</th>
-            <th scope="col" class="px-6 py-3">Ações</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr class="border-b hover:bg-[#2a7ae420] border-t" v-for="product in store.state.productStore.products" :key="product" :product="product">
-            <th scope="row" class="px-6 py-4">{{product.id}}</th>
-            <th scope="row" class="px-6 py-4 whitespace-nowrap">{{product.title}}</th>
-            <td class="px-6 py-4">{{product.category}}</td>
-            <td class="px-6 py-4">R$ {{product.price}}</td>
-            <td class="px-6 py-4 text-start flex space-x-4">
-              <a class="font-medium text-blue-600 cursor-pointer" title="Editar" @click="edit()">
-                <i class="p-3 bg-gray-200 rounded-[25px] text-gray-500 hover:bg-[#2a7ae4] hover:text-gray-200 fa-solid fa-pen"></i>
-              </a>
-
-              <a class="font-medium text-blue-600 cursor-pointer" title="Deletar" @click="del()">
-                <i class="p-3 bg-gray-200 rounded-[25px] text-gray-500 hover:bg-[#2a7ae4] hover:text-gray-200 fa-solid fa-trash-can"></i>
-              </a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <TheTable :products="store.products" @handlerEdit="edit" @handlerRemove="del"></TheTable>
     
     <!--Edit/Add Side Form-->
     <ProductForm @handlerConfirmForm="handler"></ProductForm>
 
     <!--Dialog-->
-    <TheDialog></TheDialog>
+    <TheDialog @handlerConfirm="confirmDel"></TheDialog>
   </div>
 </template>
 
 <script setup>
   import TheSearch from '@/components/TheSearch.vue';
+  import TheTable from '../../../../components/TheTable.vue';
   import ProductForm from '../components/ProductForm.vue';
   import TheDialog from '../../../../components/TheDialog.vue';
 
@@ -54,26 +25,30 @@
   import { onMounted } from 'vue';
 
   const store = useStore();
-  const props = defineProps({
-    product: {
-      id: Number,
-      url: String,
-      title: String,
-      category: String,
-      price: Number,
-      description: String
-    }
-  });
 
   function add() {
     store.commit('productStore/storeProduct', {});
     store.commit('formStore/storeIsOpen', true);
     store.commit('formStore/storeIsNew', true);
   }
-  function edit(id){
+  function edit(id){    
     store.dispatch('productStore/getById', id).then(() => {
       store.commit('formStore/storeIsLoading', false);
     });
+  }  
+  function del() {
+    store.dispatch("productStore/delete", store.state.productStore.product.id).then(() => {
+
+      get();
+    });
+  }
+  function confirmDel(isConfirmed){
+    if(isConfirmed){
+      store.commit('dialogStore/storeIsOpen', false);
+      del();
+    }else{
+      store.commit('dialogStore/storeIsOpen', false);
+    }
   }
   function handler(novo){
     if(novo){
@@ -83,6 +58,7 @@
         get();
       });
     }else{
+      console.log('editou')
       store.dispatch('productStore/put', store.state.productStore.product).then((response) => {
         console.log(response);
         

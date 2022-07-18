@@ -9,7 +9,7 @@ export default {
         url: "",
         title: "",
         category: "",
-        price: 0,  
+        price: 0,
         description: "",
       }
     }
@@ -64,7 +64,7 @@ export default {
 
     async put({ commit }, payload) {
       return new Promise((resolve, reject) => {
-        http.put("v1/products", payload, {
+        http.put("v1/products/" + payload.id, payload, {
           headers: { 'Authorization': localStorage.getItem('token') }
         }).then(response => {
           commit("storeProduct", {});

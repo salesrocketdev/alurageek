@@ -1,5 +1,5 @@
 <template>
-  <the-form @handlerConfirmForm="handlerTrip">
+  <the-form @handlerConfirmForm="handlerProduct">
     <template v-slot:title>
       {{store.state.formStore.title}}
     </template>
@@ -13,6 +13,7 @@
         <div class="dialog-form h-2/3 mb-5">
           <label class="form-label" for="url">URL da imagem</label>
           <input class="form-input w-full mt-[5px] mb-[5px] placeholder-[#8b8b8b]" id="url" type="text" placeholder="URL da imagem" v-model="store.state.productStore.product.url"/>
+          <input class="form-input w-full mt-[5px] mb-[5px] placeholder-[#8b8b8b]" id="url" type="text" placeholder="URL da imagem" v-model="store.state.productStore.product.id"/>
 
           <label class="form-label" for="title">Nome do Produto</label>
           <input class="form-input w-full mt-[5px] mb-[5px] placeholder-[#8b8b8b]" id="title" type="text" placeholder="Nome do Produto" v-model="store.state.productStore.product.title"/>
@@ -20,7 +21,7 @@
           <label class="form-label" for="category">Categoria</label>
           <input class="form-input w-full mt-[5px] mb-[5px] placeholder-[#8b8b8b]" id="category" type="text" placeholder="Categoria" v-model="store.state.productStore.product.category"/>          
 
-          <label class="form-label" for="price">Preço do Produto</label>
+          <label class="form-label" for="price">Preço do Produto</label>             
           <the-masked id="price" placeholder="Preço do Produto" :options="{ currency: 'BRL', locale: 'pt-br', autoDecimalDigits: true }" v-model="store.state.productStore.product.price"/>
 
           <label class="form-label" for="description">Descrição do Produto</label>
@@ -43,7 +44,7 @@
     'handlerConfirmForm'
   ]);
 
-  function handlerTrip(){
+  function handlerProduct(){
     store.commit('formStore/storeIsOpen', false);
     emit('handlerConfirmForm', store.state.formStore.isNew);
   }

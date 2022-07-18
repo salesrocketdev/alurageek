@@ -1,27 +1,35 @@
 /*#region Base Card Item*/
-.card-item {
-  display: flex;
-  background-color: var(--main-bg-color);
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.15);
-}
-
-#card-action {
-  background-color: #fff;
-  border: 1px solid #b1b1b150;
-  width: 200px;
-  border-radius: 5px;
-  position: absolute;
-  top: 60px;
-  right: 20px;
-  z-index: 100;
-  padding: 10px;
+.item-info {
   display: flex;
   flex-direction: column;
-  box-shadow: 0px 0px 10px #00000050;
-  animation: popup 0.5s forwards;
+  justify-content: space-between;
+  background-color: var(--main-nav-bg-color);
+  width: 250px;
+  max-width: 250px;
+}
+
+.item-info .item-title {
+  display: flex;
+  width: 100%;
+}
+
+.item-info .item-title p, .item-desc p {
+  padding: 5px;
+  padding-left: 0px;
+  color: var(--main-primary-text-color);
+}
+
+.item-info .item-title p:nth-child(2){
+  margin-left: auto;
+}
+.item-info .item-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  font-weight: 600;
+  padding: 10px 10px 0px 10px;
+  color: var(--main-primary-text-color);
 }
 /*#endregion*/
 

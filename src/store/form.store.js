@@ -16,10 +16,12 @@ export default {
     },
     storeIsNew (state, payload) {
       state.isNew = payload;
+      state.title = 'Novo produto';
       state.isLoading = false;
     },
     storeId (state, payload) {
       state.id = payload;
+      state.title = 'Editar produto';
     },
     storeIsLoading (state, payload) {
       state.isLoading = payload;

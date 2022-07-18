@@ -6,6 +6,7 @@ export default {
     return {
       products: [],
       product: {
+        id: "",
         url: "",
         title: "",
         category: "",
@@ -20,6 +21,9 @@ export default {
     },
     storeProduct(state, payload) {      
       state.product = payload;
+    },
+    storeProductId(state, payload) {      
+      state.id = payload;
     },
   },
   actions: {

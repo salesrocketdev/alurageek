@@ -13,7 +13,6 @@
         <div class="dialog-form h-2/3 mb-5">
           <label class="form-label" for="url">URL da imagem</label>
           <input class="form-input w-full mt-[5px] mb-[5px] placeholder-[#8b8b8b]" id="url" type="text" placeholder="URL da imagem" v-model="store.state.productStore.product.url"/>
-          <input class="form-input w-full mt-[5px] mb-[5px] placeholder-[#8b8b8b]" id="url" type="text" placeholder="URL da imagem" v-model="store.state.productStore.product.id"/>
 
           <label class="form-label" for="title">Nome do Produto</label>
           <input class="form-input w-full mt-[5px] mb-[5px] placeholder-[#8b8b8b]" id="title" type="text" placeholder="Nome do Produto" v-model="store.state.productStore.product.title"/>

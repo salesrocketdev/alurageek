@@ -1,27 +1,27 @@
 <template>
-  <div class="item-info mb-5">
-    <div class="item-image mb-2">
+  <div class="item-info mb-5 shadow-lg">
+    <div class="item-image p-[5px]">
       <img class="w-full" :src="props.product.url" alt="">        
     </div>
 
-    <div class="item-desc">
+    <div class="item-desc p-3">
       <p class="font-[500] text-[16px]">{{props.product.title}}</p>
       <p class="font-[700] text-[16px]">R$ {{props.product.price}}</p>
-      <p class="font-[500] text-[16px]">{{props.product.description}}</p>
+      <p class="font-[400] text-[13px]">1x de R$ {{props.product.price}} sem juros no cartão de crédito</p>
     </div>
 
     <div class="item-action flex flex-col" v-if="!store.state.loginStore.isLogged">
-      <router-link to="info">
-        <button class="w-full primary-button" @click="seeProduct()">ver produto</button>
-      </router-link>
+      <button class="w-full primary-button" @click="handlerOpen(product)">ver produto</button>
     </div>
   </div>
 </template>
 
 <script setup>
+  import { useRouter } from 'vue-router';
   import { useStore } from 'vuex';
   import { defineProps } from 'vue';
 
+  const router = useRouter();
   const store = useStore();
   const props = defineProps({
     product: {
@@ -29,45 +29,18 @@
       url: String,
       title: String,
       price: Number,
-      description: String
+      category: String
     }
   });
 
-  function seeProduct() {
-    //router.push('info/' + props.product.id);
+  function handlerOpen(product) {
+    store.commit('productStore/storeProduct', product);
+    console.log(product);
+
+    router.push('info/' + props.product.id);
   }
 </script>
 
 <style scoped>
-.item-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-width: 170px;
-  margin-right: 10px;
-}
 
-.item-info .item-title {
-  display: flex;
-  width: 100%;
-}
-
-.item-info .item-title p, .item-desc p {
-  padding: 5px;
-  padding-left: 0px;
-  color: var(--main-primary-text-color);
-}
-
-.item-info .item-title p:nth-child(2){
-  margin-left: auto;
-}
-.item-info .item-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  font-weight: 600;
-  padding: 10px 10px 0px 10px;
-  color: var(--main-primary-text-color);
-}
 </style>

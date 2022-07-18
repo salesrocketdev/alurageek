@@ -1,12 +1,15 @@
 .product-list {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-column-gap: 6px;
+  grid-row-gap:6px;
   gap: 1em;
   justify-items: center;
 }
 
 .product-info {
   display: flex;
+  justify-content: space-around;
 }
 .product-info .product-image {
   margin-right: 15px;

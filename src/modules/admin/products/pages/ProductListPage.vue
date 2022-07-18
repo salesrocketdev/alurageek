@@ -35,7 +35,7 @@
     store.dispatch('productStore/getById', id).then(() => {
       store.commit('formStore/storeIsLoading', false);
     });
-  }  
+  }
   function del() {
     store.dispatch("productStore/delete", store.state.productStore.product.id).then(() => {
 
@@ -58,7 +58,6 @@
         get();
       });
     }else{
-      console.log('editou')
       store.dispatch('productStore/put', store.state.productStore.product).then((response) => {
         console.log(response);
         

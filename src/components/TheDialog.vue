@@ -7,7 +7,7 @@
       </div>
       
       <div class="dialog-content">
-        <p class="text-[#a6a6a6]">{{store.state.dialogStore.message}}</p>
+        <p class="text-[#a6a6a6] p-3">{{store.state.dialogStore.message}}</p>
       </div>  
 
       <div class="dialog-action">

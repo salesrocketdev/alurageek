@@ -2,12 +2,11 @@ import App from './App.vue'
 
 import { createApp } from 'vue'
 import { createStore } from 'vuex'
-import { createRouter, createWebHashHistory } from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 
 //Standard Module
 import MainPage from "./modules/standard/MainPage.vue";
 import HomePage from "./modules/standard/HomePage.vue";
-import ProductListPage from "./modules/standard/ProductListPage.vue";
 import ProductInfoPage from "./modules/standard/ProductInfoPage.vue";
 import LoginPage from "./modules/standard/LoginPage.vue";
 
@@ -22,7 +21,7 @@ import DialogStore from "./store/dialog.store";
 import LoginStore from "./store/login.store";
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes: [
     { path: "/", redirect: "/home" },
     {
@@ -32,13 +31,9 @@ const router = createRouter({
         {
           path: "home",
           component: HomePage,
-        },
+        },        
         {
-          path: "list",
-          component: ProductListPage,
-        },
-        {
-          path: "info",
+          path: "info/:id",
           component: ProductInfoPage,
         },
       ],

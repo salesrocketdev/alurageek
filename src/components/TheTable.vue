@@ -45,10 +45,11 @@
   ]);
 
   function handlerEdit(product){
+    store.commit('formStore/storeIsNew', false);
     store.commit('formStore/storeId', product.id);
     store.commit('formStore/storeIsOpen', true);
-    store.commit('formStore/storeIsNew', false);
-
+    
+    console.log(product.price);
     emit('handlerEdit', product.id);
   }
   function handlerDel(product){

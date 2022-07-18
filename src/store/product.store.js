@@ -38,7 +38,7 @@ export default {
 
     async getById({ commit }, payload) {
       return new Promise((resolve, reject) => {
-        http.get("v1/product/" + payload, {
+        http.get("v1/products/" + payload, {
           headers: { 'Authorization': localStorage.getItem('token') }
         }).then(response => {
           commit("storeProduct", response.data);
@@ -51,7 +51,7 @@ export default {
 
     async post({ commit }, payload) {
       return new Promise((resolve, reject) => {
-        http.post("v1/product", payload, {
+        http.post("v1/products", payload, {
           headers: { 'Authorization': localStorage.getItem('token') }
         }).then(response => {
           commit("storeProduct", {});
@@ -64,7 +64,7 @@ export default {
 
     async put({ commit }, payload) {
       return new Promise((resolve, reject) => {
-        http.put("v1/product", payload, {
+        http.put("v1/products", payload, {
           headers: { 'Authorization': localStorage.getItem('token') }
         }).then(response => {
           commit("storeProduct", {});
@@ -77,10 +77,10 @@ export default {
 
     async delete({ commit }, payload) {
       return new Promise((resolve, reject) => {
-        http.delete("v1/trip/" + payload, {
+        http.delete("v1/products/" + payload, {
           headers: { 'Authorization': localStorage.getItem('token') }
         }).then(response => {
-          commit("storeTrip", {});
+          commit("storeProduct", {});
           resolve(response.data);
         }, error => {
           reject(error);

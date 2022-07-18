@@ -2,7 +2,7 @@
   <div class="content-box">
     <div class="content">
       <h1 class="title w-[250px]">Lista de produtos</h1>
-      <TheSearch @handlerForm="add()" @handler-dialog="del()"></TheSearch>
+      <TheSearch @handlerForm="add()"></TheSearch>
     </div>
 
     <div class="bg-[#fff] relative overflow-x-auto h-5/6 sm:rounded-[5px]">
@@ -24,11 +24,11 @@
             <td class="px-6 py-4">{{product.category}}</td>
             <td class="px-6 py-4">R$ {{product.price}}</td>
             <td class="px-6 py-4 text-start flex space-x-4">
-              <a class="font-medium text-blue-600 cursor-pointer" title="Editar">
+              <a class="font-medium text-blue-600 cursor-pointer" title="Editar" @click="edit()">
                 <i class="p-3 bg-gray-200 rounded-[25px] text-gray-500 hover:bg-[#2a7ae4] hover:text-gray-200 fa-solid fa-pen"></i>
               </a>
 
-              <a class="font-medium text-blue-600 cursor-pointer" title="Deletar">
+              <a class="font-medium text-blue-600 cursor-pointer" title="Deletar" @click="del()">
                 <i class="p-3 bg-gray-200 rounded-[25px] text-gray-500 hover:bg-[#2a7ae4] hover:text-gray-200 fa-solid fa-trash-can"></i>
               </a>
             </td>
@@ -38,7 +38,7 @@
     </div>
     
     <!--Edit/Add Side Form-->
-    <ProductForm></ProductForm>
+    <ProductForm @handlerConfirmForm="handler"></ProductForm>
 
     <!--Dialog-->
     <TheDialog></TheDialog>
@@ -54,13 +54,41 @@
   import { onMounted } from 'vue';
 
   const store = useStore();
+  const props = defineProps({
+    product: {
+      id: Number,
+      url: String,
+      title: String,
+      category: String,
+      price: Number,
+      description: String
+    }
+  });
 
   function add() {
+    store.commit('productStore/storeProduct', {});
     store.commit('formStore/storeIsOpen', true);
     store.commit('formStore/storeIsNew', true);
   }
-  function del() {
-    store.commit('dialogStore/storeIsOpen', true);
+  function edit(id){
+    store.dispatch('productStore/getById', id).then(() => {
+      store.commit('formStore/storeIsLoading', false);
+    });
+  }
+  function handler(novo){
+    if(novo){
+      store.dispatch('productStore/post', store.state.productStore.product).then((response) => {
+        console.log(response)
+
+        get();
+      });
+    }else{
+      store.dispatch('productStore/put', store.state.productStore.product).then((response) => {
+        console.log(response);
+        
+        get();
+      });
+    }
   }
   function get(){
     store.dispatch("productStore/get");

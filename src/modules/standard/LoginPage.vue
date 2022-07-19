@@ -14,7 +14,7 @@
         <input id="password" class="form-input w-full mt-3 mb-[40px]" type="password" placeholder="insira sua palavra chave" v-model="loginModel.password">
 
         <button title="Conectar-se" class="primary-button w-full mb-3 hover:bg-[#f15ada]" @click="login()">Conectar-se</button>
-        <router-link to="/home" v-if="!store.state.loginStore.isLogged">
+        <router-link to="/home">
           <button title="Voltar" class="primary-button w-full hover:bg-[#f15ada]" type="button">Voltar para loja</button>
         </router-link>
       </div>

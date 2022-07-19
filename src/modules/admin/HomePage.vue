@@ -1,7 +1,7 @@
 <template>
   <div class="content-box">
     <div class="content">
-      <h1 class="title w-full">Página ínicial administrador</h1>
+      <h1 class="title w-full">Produtos Cadastrados</h1>
     </div>
 
     <div class="product-list">

@@ -1,6 +1,5 @@
 <template>
   <input class="form-input w-full" title="Pesquisar Produto" type="text" placeholder="Pesquisar produto..." />
-
   <button
     title="Pesquisar" type="button" 
     class="base-circle-button hover:text-[#212121]">

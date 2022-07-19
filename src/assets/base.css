@@ -31,3 +31,10 @@ html {
   left: 0px;
   z-index: 20;
 }
+.outsideNav {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0px;
+  z-index: 20;
+}

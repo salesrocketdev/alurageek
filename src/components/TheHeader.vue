@@ -16,9 +16,6 @@
 .hero header {
   background-image: url('../assets/img/hero.png');
   background-size: cover;
-  height: 300px;
-}
-@media only screen and (min-width: 280px) and (max-width: 740px) {
-
+  height: 350px;
 }
 </style>

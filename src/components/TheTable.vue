@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[#fff] relative overflow-x-auto h-5/6 sm:rounded-[5px]">
+  <div class="bg-[#fff] relative overflow-x-auto h-5/6 rounded-[5px]">
       <table class="w-full text-sm text-left text-[#6D6D6D]">
         <thead class="text-xs bg-[#2a7ae4] text-gray-100 uppercase">
           <tr>
@@ -16,7 +16,7 @@
             <th scope="row" class="px-6 py-4">{{product.id}}</th>
             <th scope="row" class="px-6 py-4 whitespace-nowrap">{{product.title}}</th>
             <td class="px-6 py-4">{{product.category}}</td>
-            <td class="px-6 py-4">{{product.price}}</td>
+            <td class="px-6 py-4">R$ {{product.price}}</td>
             <td class="px-6 py-4 text-start flex space-x-4">
               <a class="font-medium text-blue-600 cursor-pointer" title="Editar" @click="handlerEdit(product)">
                 <i class="p-3 bg-gray-200 rounded-[25px] text-gray-500 hover:bg-[#2a7ae4] hover:text-gray-200 fa-solid fa-pen"></i>
@@ -49,7 +49,6 @@
     store.commit('formStore/storeId', product.id);
     store.commit('formStore/storeIsOpen', true);
     
-    console.log(product.price);
     emit('handlerEdit', product.id);
   }
   function handlerDel(product){

@@ -1,10 +1,14 @@
 <template>
   <div class="content-box">
     <div class="content">
-      <h1 class="title w-[250px]">Lista de produtos</h1>
+      <h1 class="title w-[250px]">Lista de Produtos</h1>
       <TheSearch @handlerForm="add()"></TheSearch>
     </div>
 
+    <div class="filter-info">      
+      <h2 class="text-[#bbb] text-end p-3"><i class="fa fa-filter mr-3"></i>Filtrando todos os registros</h2>
+    </div>
+    
     <TheTable :products="store.products" @handlerEdit="edit" @handlerRemove="del"></TheTable>
     
     <!--Edit/Add Side Form-->
@@ -52,14 +56,12 @@
   }
   function handler(novo){
     if(novo){
-      store.dispatch('productStore/post', store.state.productStore.product).then((response) => {
-        console.log(response)
+      store.dispatch('productStore/post', store.state.productStore.product).then(() => {
 
         get();
       });
     }else{
-      store.dispatch('productStore/put', store.state.productStore.product).then((response) => {
-        console.log(response);
+      store.dispatch('productStore/put', store.state.productStore.product).then(() => {
         
         get();
       });

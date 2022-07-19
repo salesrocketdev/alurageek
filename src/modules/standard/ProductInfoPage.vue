@@ -27,7 +27,6 @@
 
   function get(){
     store.dispatch("productStore/getById", route.params.id);
-    console.log(route.params.id);
   }
 
   onMounted(() => {

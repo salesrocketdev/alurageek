@@ -1,6 +1,6 @@
 <template>
   <div class="item-info mb-5 shadow-lg">
-    <div class="item-image p-[5px]">
+    <div class="item-image p-[5px] min-w-[180px] min-h-[180px]">
       <img class="w-full" :src="props.product.url" alt="">        
     </div>
 
@@ -35,7 +35,6 @@
 
   function handlerOpen(product) {
     store.commit('productStore/storeProduct', product);
-    console.log(product);
 
     router.push('info/' + props.product.id);
   }

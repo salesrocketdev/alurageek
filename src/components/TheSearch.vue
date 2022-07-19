@@ -1,6 +1,8 @@
 <template>
-  <input class="form-input w-full" title="Pesquisar Produto" type="text" placeholder="Pesquisar produto..." />
+  <input class="form-input w-full" title="Pesquisar Produto" type="text" placeholder="Pesquisar produto..." v-model="inputValue"/>
   <button
+    @click="commit()"
+    v-on:click="emit('handlerSearch')"
     title="Pesquisar" type="button" 
     class="base-circle-button hover:text-[#212121]">
     <i class="fa fa-search" aria-hidden="true"></i>
@@ -15,11 +17,21 @@
 </template>
 
 <script setup>
-  import { defineEmits } from 'vue';
+  import { defineEmits, ref } from 'vue';
+  import { useStore } from 'vuex';
 
+  let inputValue = ref();
+
+  const store = useStore();
   const emit = defineEmits([
     'handlerForm',
+    'handlerSearch'
   ]);
+
+  function commit() {
+    store.commit('searchStore/storeTitle', inputValue.value);
+    inputValue.value = '';
+  }
 </script>
 
 <style scoped>

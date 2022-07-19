@@ -2,11 +2,12 @@
   <div class="content-box">
     <div class="content">
       <h1 class="title w-[250px]">Lista de Produtos</h1>
-      <TheSearch @handlerForm="add()"></TheSearch>
+      <TheSearch @handlerForm="add()" @handlerSearch="searchByTitle()"></TheSearch>
     </div>
 
-    <div class="filter-info">      
-      <h2 class="text-[#bbb] text-end p-3"><i class="fa fa-filter mr-3"></i>Filtrando todos os registros</h2>
+    <div class="filter-info">
+      <h2 v-if=!store.state.searchStore.isFiltering class="text-[#bbb] text-end p-3"><i class="fa fa-filter mr-3"></i>Filtrando todos os registros</h2>
+      <h2 v-if=store.state.searchStore.isFiltering class="text-[#bbb] text-end p-3"><i class="fa fa-filter mr-3"></i>Filtrando por "{{store.state.searchStore.title}}"</h2>
     </div>
     
     <TheTable :products="store.products" @handlerEdit="edit" @handlerRemove="del"></TheTable>
@@ -27,7 +28,7 @@
 
   import { useStore } from 'vuex';
   import { onMounted } from 'vue';
-
+  
   const store = useStore();
 
   function add() {
@@ -35,6 +36,18 @@
     store.commit('formStore/storeIsOpen', true);
     store.commit('formStore/storeIsNew', true);
   }
+  function searchByTitle(){
+    if (store.state.searchStore.title == '') {
+      store.commit('searchStore/storeIsFiltering', false);
+      get();
+    } else {
+      store.dispatch("productStore/getByTitle", store.state.searchStore.title).then(response => {
+        store.commit('productStore/storeProducts', response);
+        store.commit('searchStore/storeIsFiltering', true);
+      });
+    }    
+  }
+
   function edit(id){    
     store.dispatch('productStore/getById', id).then(() => {
       store.commit('formStore/storeIsLoading', false);

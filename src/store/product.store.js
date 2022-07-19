@@ -53,6 +53,19 @@ export default {
       });
     },
 
+    async getByTitle({ commit }, payload) {
+      return new Promise((resolve, reject) => {
+        http.get("v1/products/Filter/Title/" + payload, {
+          headers: { 'Authorization': localStorage.getItem('token') }
+        }).then(response => {
+          commit("storeProduct", response.data);
+          resolve(response.data);
+        }, error => {
+          reject(error);
+        })
+      });
+    },
+
     async post({ commit }, payload) {
       return new Promise((resolve, reject) => {
         http.post("v1/products", payload, {

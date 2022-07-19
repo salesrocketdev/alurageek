@@ -19,6 +19,7 @@ import FormStore from "./store/form.store";
 import ProductStore from "./store/product.store";
 import DialogStore from "./store/dialog.store";
 import LoginStore from "./store/login.store";
+import SearchStore from "./store/search.store";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -64,11 +65,11 @@ const app = createApp(App);
 
 const store = createStore({
   modules: {
-    //tripStore: TripStore,
     formStore: FormStore,
     productStore: ProductStore,
     dialogStore: DialogStore,
     loginStore: LoginStore,
+    searchStore: SearchStore,
   }
 })
 

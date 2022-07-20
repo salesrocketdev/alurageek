@@ -27,6 +27,7 @@
 <style>
 .hero header {
   background-image: url('../assets/img/hero.png');
+  background-repeat: no-repeat;
   background-size: 100% 100%;
   height: 350px;
 }

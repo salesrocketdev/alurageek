@@ -20,6 +20,7 @@
   const store = useStore();
   
   function get(){
+    store.commit('productStore/storeProduct', {});
     store.dispatch("productStore/get");
   }
 

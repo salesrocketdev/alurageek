@@ -1,9 +1,9 @@
 <template>
-  <input class="form-input w-full" title="Pesquisar Produto" type="text" placeholder="Pesquisar produto..." v-model="inputValue"/>
+  <input class="form-input w-full" title="Pesquisar Produto" type="search" placeholder="Pesquisar produto..." v-model="inputValue"/>
   <button
     @click="commit()"
     v-on:click="emit('handlerSearch')"
-    title="Pesquisar" type="button" 
+    title="Pesquisar" type="submit" 
     class="base-circle-button hover:text-[#212121]">
     <i class="fa fa-search" aria-hidden="true"></i>
   </button>

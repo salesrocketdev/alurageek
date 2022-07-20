@@ -7,7 +7,8 @@ import { createRouter, createWebHistory } from "vue-router";
 //Standard Module
 import MainPage from "./modules/standard/MainPage.vue";
 import HomePage from "./modules/standard/HomePage.vue";
-import ProductInfoPage from "./modules/standard/ProductInfoPage.vue";
+import ProductListPage from "./modules/standard/products/pages/ProductListPage.vue";
+import ProductInfoPage from "./modules/standard/products/pages/ProductInfoPage.vue";
 import LoginPage from "./modules/standard/LoginPage.vue";
 
 //Admin Module
@@ -32,7 +33,11 @@ const router = createRouter({
         {
           path: "home",
           component: HomePage,
-        },        
+        }, 
+        {
+          path: "list/:category",
+          component: ProductListPage,
+        },       
         {
           path: "info/:id",
           component: ProductInfoPage,
@@ -59,6 +64,9 @@ const router = createRouter({
       component: LoginPage,
     },
   ],
+  scrollBehavior() {
+    document.getElementById('app').scrollIntoView({ behavior: 'smooth' });
+  }
 });
 
 const app = createApp(App);

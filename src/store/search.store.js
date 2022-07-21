@@ -4,6 +4,7 @@ export default {
     return {
       title: '',
       isFiltering: false,
+      isSearching: false,
     }
   },
   mutations: {
@@ -15,6 +16,9 @@ export default {
     },
     storeIsFiltering (state, payload) {
       state.isFiltering = payload;
+    },
+    storeIsSearching (state, payload) {
+      state.isSearching = payload;
     },
   },
 }

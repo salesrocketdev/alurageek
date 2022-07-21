@@ -59,6 +59,7 @@
   const store = useStore();
 
   function toCategory() {
+    store.commit('searchStore/storeIsSearching', false);
     router.push('list/' + store.state.productStore.category);
   }
 
@@ -66,6 +67,7 @@
     store.dispatch("productStore/getByCategory", 'Star Wars').then(response => {
 
       store.commit('productStore/storeProductsStarWars', response);
+      store.commit('searchStore/storeIsFiltering', true);
     });    
   }  
 
@@ -73,6 +75,7 @@
     store.dispatch("productStore/getByCategory", 'Consoles').then(response => {
 
       store.commit('productStore/storeProductsConsoles', response);
+      store.commit('searchStore/storeIsFiltering', true);
     });    
   }
 
@@ -85,9 +88,9 @@
   }
 
   onMounted(() => {
-    get();
     getByCategoryStarWars();
     getByCategoryConsoles();
+    get();
   });
 </script>
 

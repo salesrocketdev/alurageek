@@ -4,7 +4,9 @@
 
     <!-- SECTION STAR WARS-->
     <section class="content flex justify-between">
-      <h1 class="title">Seção: {{route.params.category}}</h1>
+      <h1 v-if="store.state.searchStore.isFiltering == false && store.state.searchStore.isSearching == false" class="title">Todos os produtos</h1>
+      <h1 v-if=store.state.searchStore.isFiltering class="title">Filtrando por "{{route.params.category}}"</h1>
+      <h1 v-if="store.state.searchStore.isFiltering == false && store.state.searchStore.isSearching == true" class="title">Filtrando por "{{route.params.category}}"</h1>
     </section>
 
     <section class="product-list">
@@ -28,7 +30,7 @@
     store.dispatch("productStore/getByCategory", route.params.category).then(response => {
 
       store.commit('productStore/storeProducts', response);
-    });    
+    });
   }
 
   function get(){
@@ -38,7 +40,10 @@
   onMounted(() => {
     if (route.params.category == 'diversos') {
       get();
-    } else {
+    } else if (store.state.searchStore.isSearching == true) {
+      store.commit('searchStore/storeIsSearching', true);
+    }
+    else {
       getByCategory();
     }
   });

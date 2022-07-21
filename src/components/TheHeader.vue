@@ -20,7 +20,7 @@
   const store = useStore();
   
   function toCategory() {
-    router.push('list/' + store.state.productStore.category);
+    router.push('../list/' + store.state.productStore.category);
   }
 </script>
 

@@ -1,8 +1,17 @@
 <template>
   <nav id="myTopNav">     
-    <div class="header-logo flex flex-column items-center justify-between">
+    <div class="header-logo flex flex-column items-center justify-between mr-3">
       <img class="header-icon" src="../assets/img/logo.svg" alt="Alura Geek">
-      <a @click="toogleMenu()" id="menuToggle" title="Menu" class="w-full text-end text-[28px]"><i class="fa fa-bars text-[#2a7ae4]" aria-hidden="true"></i></a>
+      <a @click="toogleSearch()" id="searchToggle" title="Pesquisar" class="ml-auto mr-3 text-end text-[28px]"><i class="fa fa-search p-[10px] text-[#2a7ae4]" aria-hidden="true"></i></a>
+      <a @click="toogleMenu()" id="menuToggle" title="Menu" class="text-end text-[28px]"><i class="fa fa-bars p-[10px] text-[#2a7ae4]" aria-hidden="true"></i></a>
+    </div>
+
+    <div id="header-search" class="header-search w-2/6 mr-auto" v-if="!store.state.loginStore.isLogged">
+      <form class="bg-[#F5F5F5] rounded-[25px] flex" v-on:submit.prevent>
+        <input class="bg-[#F5F5F5] text-[#A2A2A2] h-[46px] w-full pl-3 rounded-l-[25px]" title="O que deseja encontrar" type="text" placeholder="O que deseja encontrar?" v-model="inputValue"/>
+
+        <button @click="searchButtonPressed()" title="Pesquisar" class="text-[#a2a2a2] hover:bg-[#2A7AE4] hover:text-[#fff] rounded-r-[25px] w-[56px]" type="submit"><i class="fa fa-search"></i></button>
+      </form>
     </div>
 
     <ul id="header-list" class="header-list hidden" @click="toogleMenu()">
@@ -53,9 +62,39 @@
 </template>
 
 <script setup>
+  import { ref } from 'vue';
+  import { useRouter } from 'vue-router';
   import { useStore } from 'vuex';
-  
+
+  let inputValue = ref();
+
+  const router = useRouter();
   const store = useStore();
+
+  function searchButtonPressed(){
+    if (inputValue.value <= 0) {
+      alert('insira um valor');
+    } else {
+      store.dispatch("productStore/getByTitle", inputValue.value).then(response => {
+        store.commit('productStore/storeProducts', response);            
+        store.commit('searchStore/storeIsFiltering', false);
+        store.commit('searchStore/storeIsSearching', true);
+
+        router.push('../list/' + inputValue.value.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, ''));      
+        inputValue.value = '';
+      });  
+    }
+  }
+
+  function toogleSearch() {
+    const headerList = document.querySelector('#header-search');
+
+    if (headerList.classList == "header-search hidden") {
+      headerList.classList = "header-search block";
+    } else {
+      headerList.classList = "header-search hidden";
+    }
+  }
 
   function toogleMenu() {
     const outside = document.querySelector('#myOutsideNav');
@@ -77,6 +116,11 @@ nav {
   align-items: center;
   justify-content: space-between;
 }
+
+.header-search {
+  z-index: 21;
+}
+
 .header-list {
   background-color: var(--main-nav-bg-color);
   width: 100%;

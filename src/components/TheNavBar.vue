@@ -8,7 +8,7 @@
 
     <div id="header-search" class="header-search w-2/6 mr-auto" v-if="!store.state.loginStore.isLogged">
       <form class="bg-[#F5F5F5] rounded-[25px] flex" v-on:submit.prevent>
-        <input class="bg-[#F5F5F5] text-[#A2A2A2] h-[46px] w-full pl-3 rounded-l-[25px]" title="O que deseja encontrar" type="text" placeholder="O que deseja encontrar?" v-model="inputValue"/>
+        <input class="bg-[#F5F5F5] text-[#A2A2A2] h-[46px] w-full pl-3 rounded-l-[25px]" title="O que deseja encontrar?" type="text" placeholder="O que deseja encontrar?" v-model="inputValue"/>
 
         <button @click="searchButtonPressed()" title="Pesquisar" class="text-[#a2a2a2] hover:bg-[#2A7AE4] hover:text-[#fff] rounded-r-[25px] w-[56px]" type="submit"><i class="fa fa-search"></i></button>
       </form>
@@ -66,14 +66,14 @@
   import { useRouter } from 'vue-router';
   import { useStore } from 'vuex';
 
-  let inputValue = ref();
+  let inputValue = ref('');
 
   const router = useRouter();
   const store = useStore();
 
   function searchButtonPressed(){
     if (inputValue.value <= 0) {
-      alert('insira um valor');
+      alert('Insira uma informação para pesquisar');
     } else {
       store.dispatch("productStore/getByTitle", inputValue.value).then(response => {
         store.commit('productStore/storeProducts', response);            

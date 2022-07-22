@@ -1,5 +1,7 @@
 <template>
-  <input class="form-input w-full" title="Pesquisar Produto" type="search" placeholder="Pesquisar produto..." v-model="inputValue"/>
+  <input class="form-input w-full" title="Pesquisar Produto" type="search" placeholder="Pesquisar produto..." 
+  v-model="inputValue"/>
+
   <button
     @click="commit()"
     v-on:click="emit('handlerSearch')"

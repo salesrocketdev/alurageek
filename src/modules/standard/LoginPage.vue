@@ -36,20 +36,21 @@
   const router = useRouter();
 
   function login() {
-    store.commit('loginStore/storeIsLogged', true);
-    router.push('admin/panel');                
+    store.commit('loginStore/storeLogin', loginModel);
 
-    store.dispatch("loginStore/post", loginModel).then(response => {
-      if(response.success){
-        localStorage.clear();
-        localStorage.setItem('token', 'bearer ' + response.data.token);
-        localStorage.setItem('name', response.data.name);
-        localStorage.setItem('id', response.data.id);
-    
-      }else{
-        console.log(response.error);
-      }
-    });
+      store.dispatch("loginStore/post", store.state.loginStore.login).then(response => {
+        if(response.success){
+          localStorage.clear();
+          localStorage.setItem('token', 'bearer ' + response.token);
+          localStorage.setItem('username', response.data.username);
+          localStorage.setItem('role', response.data.role);
+
+          store.commit('loginStore/storeIsLogged', true);
+          router.push('admin/panel');
+        }else {
+          console.log(response.errors);
+        }
+      }); 
   }
 </script>
 

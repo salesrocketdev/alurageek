@@ -2,7 +2,7 @@
   <nav id="myTopNav">     
     <div class="header-logo flex flex-column items-center justify-between mr-3">
       <img class="header-icon" src="../assets/img/logo.svg" alt="Alura Geek">
-      <a @click="toogleSearch()" id="searchToggle" title="Pesquisar" class="ml-auto mr-3 text-end text-[28px]"><i class="fa fa-search p-[10px] text-[#2a7ae4]" aria-hidden="true"></i></a>
+      <a @click="toogleSearch()" id="searchToggle" title="Pesquisar" class="ml-auto mr-3 text-end text-[28px]" v-if="!store.state.loginStore.isLogged"><i class="fa fa-search p-[10px] text-[#2a7ae4]" aria-hidden="true"></i></a>
       <a @click="toogleMenu()" id="menuToggle" title="Menu" class="text-end text-[28px]"><i class="fa fa-bars p-[10px] text-[#2a7ae4]" aria-hidden="true"></i></a>
     </div>
 
@@ -31,8 +31,8 @@
         <li @click="toLogIn" @keypress.enter="toLogIn" role="link">Login</li>
       </router-link>
 
-      <router-link to="/login" logout v-slot="{ toLogOut }" v-if="store.state.loginStore.isLogged">
-        <li @click="toLogOut" @keypress.enter="toLogOut" role="link">Sair</li>
+      <router-link to="" logout v-slot="{ toLogOut }" v-if="store.state.loginStore.isLogged">
+        <li @click="logOut()" @keypress.enter="toLogOut" role="link">Sair</li>
       </router-link>
     </ul>        
 
@@ -53,8 +53,8 @@
         <button title="Login" class="secondary-button" type="button">Login</button>
       </router-link>
 
-      <router-link to="/login" v-if="store.state.loginStore.isLogged">
-        <button title="Sair" class="secondary-button" type="button" @click="store.state.loginStore.isLogged = false">Sair</button>
+      <router-link to="" v-if="store.state.loginStore.isLogged">
+        <button @click="logOut()" title="Sair" class="secondary-button" type="button">Sair</button>
       </router-link>
     </div>
   </nav>
@@ -70,6 +70,14 @@
 
   const router = useRouter();
   const store = useStore();
+
+  function logOut() {
+    localStorage.clear();
+    store.commit('loginStore/storeIsLogged', false);
+
+    console.log('limpou')
+    router.push('/login');
+  }
 
   function searchButtonPressed(){
     if (inputValue.value <= 0) {

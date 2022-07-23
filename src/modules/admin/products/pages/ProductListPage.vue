@@ -1,6 +1,9 @@
 <template>
   <div class="content-box">
+    <h1 class="title w-[250px]">Olá, {{username}}</h1>
+
     <div class="content">
+
       <h1 class="title w-[250px]">Lista de Produtos</h1>
       <TheSearch @handlerForm="add()" @handlerSearch="searchByTitle()"></TheSearch>
     </div>
@@ -27,9 +30,10 @@
   import TheDialog from '../../../../components/TheDialog.vue';
 
   import { useStore } from 'vuex';
-  import { onMounted } from 'vue';
+  import { onMounted, ref } from 'vue';
   
   const store = useStore();
+  let username = ref(localStorage.getItem("username"));
 
   function add() {
     store.commit('productStore/storeProduct', {});

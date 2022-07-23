@@ -4,6 +4,7 @@ export default {
   namespaced: true,
   state () {
     return {
+      login: "",
       isLogged: false,
     }
   },
@@ -11,11 +12,16 @@ export default {
     storeIsLogged (state, payload) {
       state.isLogged = payload;
     },
+    storeLogin(state, payload) {      
+      state.login = payload;
+    },
   },
   actions: {
-    async post(state, payload) {
+    async post({ commit }, payload) {
       return new Promise((resolve, reject) => {
-        http.post("v1/authentication", payload).then(response => {
+        http.post("v1/users/login", payload).
+        then(response => {
+          commit("storeLogin", {});
           resolve(response.data);
         }, error => {
           reject(error);

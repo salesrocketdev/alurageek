@@ -1,10 +1,8 @@
 <template>
-  <main>
-    <TheNavbar></TheNavbar>
-    <section id="root-app">
-      <router-view></router-view>
-    </section>
-  </main>
+  <TheNavbar></TheNavbar>
+  <section>
+    <router-view id="root-app"></router-view>
+  </section>  
   <TheContact></TheContact>
   <TheFooter></TheFooter>
 </template>

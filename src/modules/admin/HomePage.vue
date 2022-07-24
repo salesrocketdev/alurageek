@@ -14,15 +14,27 @@
 <script setup>
   import TheCard from '../../components/TheCard.vue';
   
+  import { useRouter } from 'vue-router';
   import { useStore } from 'vuex';
-  import { onMounted } from 'vue';
+  import { onBeforeMount, onMounted } from 'vue';
 
+  const router = useRouter();
   const store = useStore();
   
   function get(){
     store.commit('productStore/storeProduct', {});
     store.dispatch("productStore/get");
   }
+
+  onBeforeMount(() => {
+    store.state.loginStore.isLogged = localStorage.getItem('isAuthenticated');
+    if (store.state.loginStore.isLogged == "true") {
+      console.log('Usuário autenticado | ADMIN.');
+    } else {
+      console.log('Usuário não autenticado | ADMIN.');
+      router.push('/home');
+    }
+  });
 
   onMounted(() => {
     get();

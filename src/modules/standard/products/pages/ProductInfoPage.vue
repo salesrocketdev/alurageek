@@ -14,7 +14,7 @@
 
         <p class="text-[14px] font-[400] text-[#464646] pb-3">{{store.state.productStore.product.description}}</p>
         
-        <button title="Adicionar ao carrinho" class="primary-button w-full mb-3 hover:bg-[#f15ada]">Adicionar ao carrinho</button>
+        <button title="Adicionar ao carrinho" class="primary-button w-full hover:bg-[#f15ada]">Adicionar ao carrinho</button>
       </div>
     </div>
 

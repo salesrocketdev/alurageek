@@ -6,7 +6,7 @@
       <a @click="toogleMenu()" id="menuToggle" title="Menu" class="text-end text-[28px]"><i class="fa fa-bars p-[10px] text-[#2a7ae4]" aria-hidden="true"></i></a>
     </div>
 
-    <div id="header-search" class="header-search w-2/6 mr-auto" v-if="!store.state.loginStore.isLogged">
+    <div id="header-search" class="header-search hidden" v-if="!store.state.loginStore.isLogged">
       <form class="bg-[#F5F5F5] rounded-[25px] flex" v-on:submit.prevent>
         <input class="bg-[#F5F5F5] text-[#A2A2A2] h-[46px] w-full pl-3 rounded-l-[25px]" title="O que deseja encontrar?" type="text" placeholder="O que deseja encontrar?" v-model="inputValue"/>
 
@@ -75,7 +75,7 @@
     localStorage.clear();
     store.commit('loginStore/storeIsLogged', false);
 
-    console.log('limpou')
+    console.log('Usuário desconectado.');
     router.push('/login');
   }
 
@@ -126,7 +126,7 @@ nav {
 }
 
 .header-search {
-  z-index: 21;
+  z-index: 0;
 }
 
 .header-list {

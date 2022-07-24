@@ -1,10 +1,10 @@
 <template>
-  <div class="container__login">
-    <div class="container__login--card">
-      <div class="login__title">
+  <div class="container-login">
+    <div class="container-login-card">
+      <div class="login-title">
         <h1>Painel Administrativo</h1>
       </div>
-      <div class="login__form flex flex-col">
+      <div class="login-form flex flex-col">
         <p class="form-title mb-5">Insira suas informações para acessar o painel...</p>
 
         <label class="form-label" for="email">Email</label>
@@ -18,7 +18,7 @@
           <button title="Voltar" class="primary-button w-full hover:bg-[#f15ada]" type="button">Voltar para loja</button>
         </router-link>
       </div>
-      <div class="login__footer flex items-center justify-center">
+      <div class="login-footer flex items-center justify-center">
         <img class="w-[128px] h-[64px]" src="../../assets/img/logo.svg" alt="">
       </div>
     </div>
@@ -44,8 +44,11 @@
           localStorage.setItem('token', 'bearer ' + response.token);
           localStorage.setItem('username', response.data.username);
           localStorage.setItem('role', response.data.role);
+          localStorage.setItem('isAuthenticated', response.success);
 
-          store.commit('loginStore/storeIsLogged', true);
+          store.commit('loginStore/storeIsLogged', response.success);
+          console.log('Usuário conectado.');
+
           router.push('admin/panel');
         }else {
           console.log(response.errors);
@@ -55,7 +58,7 @@
 </script>
 
 <style scoped>
-.container__login {
+.container-login {
   height: 100vh;
   background-color: #b7d5ff;
   display: flex;
@@ -65,16 +68,16 @@
   justify-content: center;
 }
 
-.container__login--card {
+.container-login-card {
   width: 30%;
   padding: 10px;
   background-color: var(--main-secondary-bg-color);
   border-radius: 10px;
 }
-.login__title {
+.login-title {
   padding-top: 25px;
 }
-.login__title h1 {
+.login-title h1 {
   text-align: center;
   font-size: 22px;
   font-weight: 700;
@@ -93,18 +96,18 @@
   font-size: 14px;
   color: #6d6d6d;
 }
-.login__form {
+.login-form {
   padding: 40px 15px 15px 15px;
 }
-.login__footer {
+.login-footer {
   position: initial;
 }
 
 @media only screen and (min-width: 280px) and (max-width: 740px) {
-  .container__login {
+  .container-login {
     display: block;
   }
-  .container__login--card {
+  .container-login-card {
     position: absolute;
     top: 15%;
     bottom: 0%;
@@ -116,7 +119,7 @@
     border-top-right-radius: 40px;
     border-top-left-radius: 40px;
   }
-  .login__footer {
+  .login-footer {
     position: absolute;
     right: 0;
     left: 0;

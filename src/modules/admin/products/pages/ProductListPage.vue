@@ -1,9 +1,6 @@
 <template>
   <div class="content-box">
-    <h1 class="title w-[250px]">Olá, {{username}}</h1>
-
     <div class="content">
-
       <h1 class="title w-[250px]">Lista de Produtos</h1>
       <TheSearch @handlerForm="add()" @handlerSearch="searchByTitle()"></TheSearch>
     </div>
@@ -29,11 +26,12 @@
   import ProductForm from '../components/ProductForm.vue';
   import TheDialog from '../../../../components/TheDialog.vue';
 
+  import { useRouter } from 'vue-router';
   import { useStore } from 'vuex';
-  import { onMounted, ref } from 'vue';
+  import { onBeforeMount, onMounted } from 'vue';
   
+  const router = useRouter();
   const store = useStore();
-  let username = ref(localStorage.getItem("username"));
 
   function add() {
     store.commit('productStore/storeProduct', {});
@@ -41,7 +39,8 @@
     store.commit('formStore/storeIsNew', true);
   }
   function searchByTitle(){
-    if (store.state.searchStore.title == '') {
+    if (store.state.searchStore.title == undefined || store.state.searchStore.title == '') {
+      alert('Insira um valor para pesquisar.');
       store.commit('searchStore/storeIsFiltering', false);
       get();
     } else {
@@ -84,6 +83,15 @@
       });
     }
   }
+  onBeforeMount(() => {
+    store.state.loginStore.isLogged = localStorage.getItem('isAuthenticated');
+    if (store.state.loginStore.isLogged == "true") {
+      console.log('Usuário autenticado | ADMIN.');
+    } else {
+      console.log('Usuário não autenticado | ADMIN.');
+      router.push('/home');
+    }
+  });
   function get(){
     store.commit('productStore/storeProduct', {});
     store.dispatch("productStore/get");

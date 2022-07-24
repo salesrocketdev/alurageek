@@ -53,7 +53,7 @@
   
   import { useRouter } from 'vue-router';
   import { useStore } from 'vuex';
-  import { onMounted } from 'vue';
+  import { onBeforeMount, onMounted } from 'vue';
 
   const router = useRouter();
   const store = useStore();
@@ -86,6 +86,17 @@
       store.commit('productStore/storeIsLoading', false);
     });
   }
+
+  onBeforeMount(() => {
+    store.state.loginStore.isLogged = localStorage.getItem('isAuthenticated');
+    if (store.state.loginStore.isLogged == "true") {
+      console.log('Usuário autenticado | STANDARD.');
+      router.push('admin/panel');
+    } else {
+      console.log('Usuário não autenticado | STANDARD.');
+      router.push('/home');
+    }
+  });
 
   onMounted(() => {
     getByCategoryStarWars();

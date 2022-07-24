@@ -5,7 +5,7 @@ export default {
   state () {
     return {
       login: "",
-      isLogged: false,
+      isLogged: false
     }
   },
   mutations: {
@@ -28,5 +28,9 @@ export default {
         });
       });
     },
+    
   },
+  getters: {
+
+  }
 }

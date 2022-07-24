@@ -11,9 +11,6 @@
   display: flex;
   justify-content: space-around;
 }
-.product-info .product-image {
-  margin-right: 15px;
-}
 .product-info .product-image img {
   max-width: 700px;
   height: 400px;

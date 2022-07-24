@@ -19,11 +19,12 @@
   import TheHeader from '@/components/TheHeader.vue';
   import TheCard from '@/components/TheCard.vue';
 
-  import { useRoute } from 'vue-router';
+  import { useRoute, useRouter } from 'vue-router';
   import { useStore } from 'vuex';
-  import { onMounted } from 'vue';
+  import { onBeforeMount, onMounted } from 'vue';
 
   const route = useRoute();
+  const router = useRouter();
   const store = useStore();
 
   function getByCategory(){
@@ -36,6 +37,20 @@
   function get(){
     store.dispatch("productStore/get");
   }
+
+  onBeforeMount(() => {
+    store.state.loginStore.isLogged = localStorage.getItem('isAuthenticated');
+    if (store.state.loginStore.isLogged == "true") {
+      console.log('Usuário autenticado | ADMIN.');
+      router.push('/admin/panel');
+    } else if (store.state.searchStore.isSearching == true) {
+      store.commit('searchStore/storeIsFiltering', false);
+    }
+    else {
+      console.log('Usuário não autenticado | ADMIN.');
+      router.push('/home');
+    }
+  });
 
   onMounted(() => {
     if (route.params.category == 'diversos') {

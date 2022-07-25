@@ -25,6 +25,6 @@
   }
 
   onMounted(() => {
-    setTimeout(getByCategoryConsoles, 1000);
+    setTimeout(getByCategoryConsoles, 3000);
   });
 </script>

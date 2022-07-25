@@ -47,8 +47,7 @@
       store.commit('searchStore/storeIsFiltering', false);
     }
     else {
-      console.log('Usuário não autenticado | ADMIN.');
-      router.push('/home');
+      console.log('Usuário não autenticado | STANDARD.');
     }
   });
 

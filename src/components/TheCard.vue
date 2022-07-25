@@ -45,8 +45,8 @@
 
   function handlerOpen(product) {
     store.commit('productStore/storeProduct', product);
-
     router.push('../info/' + props.product.id);
+    console.log(props.product)
   }
 </script>
 

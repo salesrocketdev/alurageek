@@ -94,6 +94,7 @@
   }
   .header-search {
     display: block;
+    z-index: 0;
   }
   .hero header {
     padding-left: 1rem;

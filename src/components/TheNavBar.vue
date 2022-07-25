@@ -125,10 +125,6 @@ nav {
   justify-content: space-between;
 }
 
-.header-search {
-  z-index: 0;
-}
-
 .header-list {
   background-color: var(--main-nav-bg-color);
   width: 100%;

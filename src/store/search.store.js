@@ -3,6 +3,7 @@ export default {
   state () {
     return {
       title: '',
+      notFound: false,
       isFiltering: false,
       isSearching: false,
     }
@@ -10,6 +11,9 @@ export default {
   mutations: {
     storeTitle (state, payload) {
       state.title = payload;
+    },
+    storeNotFound (state, payload) {
+      state.notFound = payload;
     },
     storeIsLoading (state, payload) {
       state.isLoading = payload;

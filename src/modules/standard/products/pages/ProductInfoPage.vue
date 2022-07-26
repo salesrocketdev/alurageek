@@ -28,7 +28,7 @@
 
   import { useRoute } from 'vue-router';  
   import { useStore } from 'vuex';
-  import { onMounted, ref } from 'vue';
+  import { onBeforeMount, ref } from 'vue';
 
   let product = ref({
     url: String,
@@ -43,14 +43,17 @@
 
   function getById(){
     store.dispatch("productStore/getById", route.params.id).then( response => {
-      product.value = response;
+      product.value = response;            
 
       //commitar categoria atual
       store.commit('productStore/storeCategory', product.value.category);
+    }).finally( () => {
+      store.commit('productStore/storeIsLoading', false);
     });
   }
 
-  onMounted(() => {
+  onBeforeMount(() => {
+    store.commit('productStore/storeIsLoading', true);
     getById();
   });
 </script>

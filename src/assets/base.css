@@ -12,7 +12,7 @@ html {
 .content {
   display: flex;
   align-items: center;
-  padding: 1.25rem 0rem;
+  padding: 1.25rem 1rem;
   min-height: 57px;
   border-bottom: 1px solid var(--main-border-bottom-color);
 }

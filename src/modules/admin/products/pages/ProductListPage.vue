@@ -10,7 +10,13 @@
       <h2 v-if=store.state.searchStore.isFiltering class="text-[#bbb] text-end p-3"><i class="fa fa-filter mr-3"></i>Filtrando por "{{store.state.searchStore.title}}"</h2>
     </div>
     
-    <TheTable :products="store.products" @handlerEdit="edit" @handlerRemove="del"></TheTable>
+    <template v-if="store.state.productStore.IsLoading">
+      <TheLoading></TheLoading>
+    </template>
+
+    <template v-if="!store.state.productStore.IsLoading">
+      <TheTable :products="store.products" @handlerEdit="edit" @handlerRemove="del"></TheTable>
+    </template>
     
     <!--Edit/Add Side Form-->
     <ProductForm @handlerConfirmForm="handler"></ProductForm>
@@ -22,6 +28,7 @@
 
 <script setup>
   import TheSearch from '@/components/TheSearch.vue';
+  import TheLoading from '@/components/TheLoading.vue';
   import TheTable from '../../../../components/TheTable.vue';
   import ProductForm from '../components/ProductForm.vue';
   import TheDialog from '../../../../components/TheDialog.vue';
@@ -42,15 +49,22 @@
     if (store.state.searchStore.title == undefined || store.state.searchStore.title == '') {
       alert('Insira um valor para pesquisar.');
       store.commit('searchStore/storeIsFiltering', false);
+      store.commit('searchStore/storeNotFound', false);
+      
       get();
     } else {
       store.dispatch("productStore/getByTitle", store.state.searchStore.title).then(response => {
-        store.commit('productStore/storeProducts', response);
+        store.commit('productStore/storeProducts', response.data);
         store.commit('searchStore/storeIsFiltering', true);
+
+        if (response.data <= 0) {
+          store.commit('searchStore/storeNotFound', true);
+        } else {
+          store.commit('searchStore/storeNotFound', false);
+        }
       });
     }    
   }
-
   function edit(id){    
     store.dispatch('productStore/getById', id).then(() => {
       store.commit('formStore/storeIsLoading', false);
@@ -94,7 +108,14 @@
   });
   function get(){
     store.commit('productStore/storeProduct', {});
-    store.dispatch("productStore/get");
+    store.commit('productStore/storeIsLoading', true);
+
+    store.dispatch("productStore/get").then( response => {
+      store.commit('searchStore/storeIsFiltering', false);
+      store.commit('productStore/storeProducts', response.data);
+    }).finally( () => {
+      store.commit('productStore/storeIsLoading', false);
+    });
   }
   onMounted(() => {
     get();

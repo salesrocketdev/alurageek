@@ -17,12 +17,16 @@ export default {
         description: "",
       },
       category: '',
-      IsLoading: false
+      IsLoading: false,
+      IsLoadingRelated: false
     }
   },
   mutations: {
     storeIsLoading(state, payload) {
       state.IsLoading = payload;
+    },
+    storeIsRelatedLoading(state, payload) {
+      state.IsLoadingRelated = payload;
     },
     storeProducts(state, payload) {
       state.products = payload;

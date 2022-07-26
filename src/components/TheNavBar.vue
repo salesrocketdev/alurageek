@@ -2,6 +2,7 @@
   <nav id="myTopNav">     
     <div class="header-logo flex flex-column items-center justify-between mr-3">
       <img class="header-icon" src="../assets/img/logo.svg" alt="Alura Geek">
+
       <a @click="toogleSearch()" id="searchToggle" title="Pesquisar" class="ml-auto mr-3 text-end text-[28px]" v-if="!store.state.loginStore.isLogged"><i class="fa fa-search p-[10px] text-[#2a7ae4]" aria-hidden="true"></i></a>
       <a @click="toogleMenu()" id="menuToggle" title="Menu" class="text-end text-[28px]"><i class="fa fa-bars p-[10px] text-[#2a7ae4]" aria-hidden="true"></i></a>
     </div>
@@ -84,10 +85,16 @@
       alert('Insira uma informação para pesquisar');
     } else {
       store.dispatch("productStore/getByTitle", inputValue.value).then(response => {
-        store.commit('productStore/storeProducts', response);            
+        store.commit('productStore/storeProducts', response.data);
         store.commit('searchStore/storeIsFiltering', false);
         store.commit('searchStore/storeIsSearching', true);
 
+        if (response.data <= 0) {
+          store.commit('searchStore/storeNotFound', true);
+        } else {
+          store.commit('searchStore/storeNotFound', false);
+        }
+      }).finally( () => {
         router.push('../list/' + inputValue.value.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, ''));      
         inputValue.value = '';
       });  

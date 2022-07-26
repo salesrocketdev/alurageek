@@ -5,15 +5,23 @@ export default {
   state () {
     return {
       login: "",
+      loginWarning: "",
+      isInvalid: false,
       isLogged: false
     }
   },
   mutations: {
-    storeIsLogged (state, payload) {
-      state.isLogged = payload;
+    storeLoginWarning(state, payload) {      
+      state.loginWarning = payload;
     },
     storeLogin(state, payload) {      
       state.login = payload;
+    },
+    storeIsLoginInvalid (state, payload) {
+      state.isInvalid = payload;
+    },
+    storeIsLogged (state, payload) {
+      state.isLogged = payload;
     },
   },
   actions: {

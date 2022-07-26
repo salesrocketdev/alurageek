@@ -11,7 +11,10 @@
         <input id="email" class="form-input w-full mt-3 mb-5" type="email" placeholder="insira seu email" v-model="loginModel.email">
 
         <label class="form-label" for="password">Palavra chave</label>
-        <input id="password" class="form-input w-full mt-3 mb-[40px]" type="password" placeholder="insira sua palavra chave" v-model="loginModel.password">
+        <input id="password" class="form-input w-full mt-3 mb-3" type="password" placeholder="insira sua palavra chave" v-model="loginModel.password">
+
+        <p v-if="isLoginInvalid" class="text-center text-[12px] text-red-600">Insira um e-mail e senha válidos</p>
+        <p v-if="store.state.loginStore.isInvalid" class="text-center text-[12px] text-red-600">{{store.state.loginStore.loginWarning}}</p>
 
         <button title="Conectar-se" class="primary-button w-full mb-3 hover:bg-[#f15ada]" @click="login()">Conectar-se</button>
         <router-link to="/home">
@@ -31,12 +34,17 @@
   import { ref } from 'vue'
   
   let loginModel = ref({});
+  let isLoginInvalid = ref(false);
 
   const store = useStore();
   const router = useRouter();
 
   function login() {
-    store.commit('loginStore/storeLogin', loginModel);
+    if (loginModel.value.email == null || loginModel.value.password == null) {
+      isLoginInvalid.value = true;
+      setTimeout(() => isLoginInvalid.value = false, 3000);
+    } else {
+      store.commit('loginStore/storeLogin', loginModel);
 
       store.dispatch("loginStore/post", store.state.loginStore.login).then(response => {
         if(response.success){
@@ -47,13 +55,19 @@
           localStorage.setItem('isAuthenticated', response.success);
 
           store.commit('loginStore/storeIsLogged', response.success);
+          store.commit('loginStore/storeIsLoginInvalid', false);
+
           console.log('Usuário conectado.');
 
           router.push('admin/panel');
         }else {
-          console.log(response.errors);
+          store.commit('loginStore/storeLoginWarning', response.errors);
+          store.commit('loginStore/storeIsLoginInvalid', true);
+
+          setTimeout(() => store.commit('loginStore/storeIsLoginInvalid', false), 3000);
         }
-      }); 
+      });
+    }
   }
 </script>
 

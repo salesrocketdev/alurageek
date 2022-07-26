@@ -23,7 +23,13 @@
   
   function get(){
     store.commit('productStore/storeProduct', {});
-    store.dispatch("productStore/get");
+    store.commit('productStore/storeIsLoading', true);
+
+    store.dispatch("productStore/get").then( response => {
+      store.commit('productStore/storeProducts', response.data);
+    }).finally( () => {
+      store.commit('productStore/storeIsLoading', false);
+    });
   }
 
   onBeforeMount(() => {

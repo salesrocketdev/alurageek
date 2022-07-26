@@ -10,8 +10,10 @@
 .product-info {
   display: flex;
   justify-content: space-around;
+  padding-top: 40px;
 }
 .product-info .product-image img {
+  width: 100%;
   max-width: 700px;
   height: 400px;
 }

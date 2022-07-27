@@ -7,7 +7,8 @@ export default {
       login: "",
       loginWarning: "",
       isInvalid: false,
-      isLogged: false
+      isLogged: false,
+      isLoginLoading: false
     }
   },
   mutations: {
@@ -22,6 +23,9 @@ export default {
     },
     storeIsLogged (state, payload) {
       state.isLogged = payload;
+    },
+    storeIsLoginLoading (state, payload) {
+      state.isLoginLoading = payload;
     },
   },
   actions: {

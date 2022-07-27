@@ -47,7 +47,9 @@
   function handlerEdit(product){
     store.commit('formStore/storeIsNew', false);
     store.commit('formStore/storeId', product.id);
+
     store.commit('formStore/storeIsOpen', true);
+    store.commit('productStore/storeProduct', product);
     
     emit('handlerEdit', product.id);
   }

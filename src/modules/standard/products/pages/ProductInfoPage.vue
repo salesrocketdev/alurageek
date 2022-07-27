@@ -43,7 +43,9 @@
 
   function getById(){
     store.dispatch("productStore/getById", route.params.id).then( response => {
-      product.value = response;            
+      
+      product.value = response.data;
+      store.commit('productStore/storeProduct', product.value);
 
       //commitar categoria atual
       store.commit('productStore/storeCategory', product.value.category);

@@ -65,8 +65,10 @@
       });
     }    
   }
-  function edit(id){    
-    store.dispatch('productStore/getById', id).then(() => {
+  function edit(id){
+    store.dispatch('productStore/getById', id).then( response => {      
+      store.commit('productStore/storeProduct', response.data);
+
       store.commit('formStore/storeIsLoading', false);
     });
   }

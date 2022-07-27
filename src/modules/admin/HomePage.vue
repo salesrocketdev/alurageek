@@ -22,7 +22,7 @@
   const store = useStore();
   
   function get(){
-    store.commit('productStore/storeProduct', {});
+    store.commit('productStore/storeProducts', {});
     store.commit('productStore/storeIsLoading', true);
 
     store.dispatch("productStore/get").then( response => {

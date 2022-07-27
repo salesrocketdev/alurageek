@@ -4,7 +4,7 @@
       <div class="login-title">
         <h1>Painel Administrativo</h1>
       </div>
-      <div class="login-form flex flex-col">
+      <form class="login-form flex flex-col" @submit.prevent="login()">
         <p class="form-title mb-5">Insira suas informações para acessar o painel...</p>
 
         <label class="form-label" for="email">Email</label>
@@ -16,19 +16,24 @@
         <p v-if="isLoginInvalid" class="text-center text-[12px] text-red-600">Insira um e-mail e senha válidos</p>
         <p v-if="store.state.loginStore.isInvalid" class="text-center text-[12px] text-red-600">{{store.state.loginStore.loginWarning}}</p>
 
-        <button title="Conectar-se" class="primary-button w-full mb-3 hover:bg-[#f15ada]" @click="login()">Conectar-se</button>
+        <button type="submit" title="Conectar-se" class="primary-button w-full mb-3 hover:bg-[#f15ada]">Conectar-se</button>
         <router-link to="/home">
           <button title="Voltar" class="primary-button w-full hover:bg-[#f15ada]" type="button">Voltar para loja</button>
         </router-link>
-      </div>
+      </form>
       <div class="login-footer flex items-center justify-center">
         <img class="w-[128px] h-[64px]" src="../../assets/img/logo.svg" alt="">
       </div>
     </div>
+
+    <!--Edit/Add Side Form-->
+    <LoginDialog :widthValue="35" v-if="store.state.loginStore.isLoginLoading"></LoginDialog>
   </div>
 </template>
 
 <script setup>
+  import LoginDialog from './products/components/LoginDialog.vue';
+
   import { useStore } from 'vuex';
   import { useRouter } from 'vue-router';
   import { ref } from 'vue'
@@ -40,9 +45,14 @@
   const router = useRouter();
 
   function login() {
+    store.commit('loginStore/storeIsLoginLoading', true);
+    
     if (loginModel.value.email == null || loginModel.value.password == null) {
       isLoginInvalid.value = true;
+
       setTimeout(() => isLoginInvalid.value = false, 3000);
+      store.commit('loginStore/storeIsLoginLoading', false);
+      
     } else {
       store.commit('loginStore/storeLogin', loginModel);
 
@@ -66,6 +76,8 @@
 
           setTimeout(() => store.commit('loginStore/storeIsLoginInvalid', false), 3000);
         }
+      }).finally(() => {
+        store.commit('loginStore/storeIsLoginLoading', false);
       });
     }
   }

@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Imports */
+@import url('../src//assets/css/animations.css');
+@import url('../src//assets/css/atoms.css');
+@import url('../src//assets/css/colors.css');
+@import url('../src//assets/css/components.css');
+@import url('../src//assets/base.css');
+@import url('../src//modules/admin/products/product.css');
+
+@import url('../src//assets/css/reset.css');
+
+@import url('../src//assets/css/footer.css');
+@import url('../src//assets/css/contact.css');
+@import url('../src//assets/css/media.css');
